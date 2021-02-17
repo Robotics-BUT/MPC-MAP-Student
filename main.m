@@ -2,7 +2,7 @@ close all;
 clear;
 clc;
 
-disp("Welcome to MPC-MAP Project, GLHF!")
+disp('Welcome to MPC-MAP Project, GLHF!')
 
 % Setup Environment
 environment_setup;
@@ -12,8 +12,8 @@ start_position = [1, 1]; % (x, y)
 agent_motion_vector = [0, 0]; % (vx, vy)
 
 % I. Build map
-game_state.map = load_map("resources/map_1.txt");
-% game_state.map = load_map("resources/map_2.txt");
+game_state.map = load_map('resources/map_1.txt');
+% game_state.map = load_map('resources/map_2.txt');
 game_state.map.discretization_step = 0.2;
 game_state.discrete_map = generate_discrete_map(game_state.map);
 
@@ -40,7 +40,7 @@ hold on;
 grid on;
 axis equal;
 axis([game_state.map.limits(1)-1 game_state.map.limits(3)+1 game_state.map.limits(2)-1 game_state.map.limits(4)+1])
-title("Arena");
+title('Arena');
 
 [cx, cy] = create_circle(game_state.map.goal(1), game_state.map.goal(2), 0.5);
 plot(cx, cy, 'Color','red', 'LineWidth',2);
@@ -63,13 +63,13 @@ while true
     
     % 2. Check if goal has been reached
     if is_in_goal(game_state)
-        disp("You WIN! GG!!!")
+        disp('You WIN! GG!!!')
         break
     end
     
     % 3. Check collision
     if is_in_wall(game_state)
-        disp("Game Over. You crashed into a wall. Try it again.");
+        disp('Game Over. You crashed into a wall. Try it again.');
         break;
     end
     
