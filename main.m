@@ -8,8 +8,8 @@ disp('Welcome to MPC-MAP Project, GLHF!')
 environment_setup;
 
 % modifiable variables
-start_position = [1, 1]; % (x, y)
-agent_motion_vector = [0, 0]; % (vx, vy)
+start_position = [1, 1, 0]; % (x, y, theta)
+agent_motion_vector = [0, 0]; % (vR, vL)
 
 % I. Build map
 game_state.map = load_map('resources/map_1.txt');
@@ -21,12 +21,14 @@ game_state.discrete_map = generate_discrete_map(game_state.map);
 game_state.agent.pose = start_position;
 game_state.agent.raycasts = [];
 game_state.agent.position_history = [];
+game_state.agent.drive.type = 2; % 1 = omnidirectional drive, 2 = differential drive
+game_state.agent.drive.interwheel_dist = 0.2; % in case of diff drive
 
 % III. Init variables for visualization
-game_state.estimated_pose = [0, 0]; % (x,y)
-game_state.est_position_history = []; % row = (x,y)
+game_state.estimated_pose = [0, 0, 0]; % (x,y,theta)
+game_state.est_position_history = []; % row = (x,y,theta)
 game_state.path = []; % row = (x,y)
-game_state.particles = []; % Nx2 matrix, row = (x,y)
+game_state.particles = []; % Nx3 matrix, row = (x,y,theta)
 
 % IV. Set given parameters - MUST BE USED FOR THE FINAL SOLUTION!
 game_state.params.sensors = [0, 45, 90, 135, 180, 225, 270, 315] / 180 * pi; % (rad)
@@ -58,7 +60,7 @@ w = waitforbuttonpress;
 while true
 	
     % 1. Move robot
-    game_state.agent.pose = move_agent(game_state.agent.pose, agent_motion_vector);  
+    game_state.agent.pose = move_agent(game_state.agent.pose, agent_motion_vector, game_state.agent.drive);  
     game_state.agent.position_history = [game_state.agent.position_history; game_state.agent.pose];    
     
     % 2. Check if goal has been reached
@@ -77,7 +79,7 @@ while true
     [game_state.measurement_distances, game_state.agent.raycasts] = perform_measurements(game_state.map, game_state.agent.pose, game_state.params.sensors);
     
     % 5. Estimate current robot position
-    game_state.estimated_pose = [0, 0];
+    game_state.estimated_pose = [0, 0, 0];
     game_state.est_position_history = [game_state.est_position_history; game_state.estimated_pose];
     
     % 6. Plan next motion command
