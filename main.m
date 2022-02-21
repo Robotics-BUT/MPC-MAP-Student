@@ -8,7 +8,7 @@ disp('Welcome to MPC-MAP Project, GLHF!')
 environment_setup;
 
 % modifiable variables
-start_position = [1, 1, 0]; % (x, y, theta)
+start_position = [1, 1, pi/2]; % (x, y, theta)
 agent_motion_vector = [0, 0]; % (vR, vL)
 
 % I. Build map
@@ -46,7 +46,7 @@ title('Arena');
 
 [cx, cy] = create_circle(game_state.map.goal(1), game_state.map.goal(2), 0.5);
 plot(cx, cy, 'Color','red', 'LineWidth',2);
-[ax, ay] = create_arrow(game_state.agent.pose(1:2), 0, 0.5);
+[ax, ay] = create_arrow(game_state.agent.pose(1:2), game_state.agent.pose(3), 0.5);
 h = plot(ax, ay, 'Color','blue', 'LineWidth',2);
 
 for i = 1 : size(game_state.map.walls, 1)
