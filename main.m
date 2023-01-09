@@ -12,8 +12,7 @@ start_position = [1, 1, pi/2]; % (x, y, theta)
 agent_motion_vector = [0, 0]; % (vR, vL)
 
 % I. Build map
-game_state.map = load_map('resources/map_1.txt');
-% game_state.map = load_map('resources/map_2.txt');
+game_state.map = load_map('resources/map_new.txt');
 game_state.map.discretization_step = 0.2;
 game_state.discrete_map = generate_discrete_map(game_state.map);
 
@@ -54,6 +53,10 @@ for i = 1 : size(game_state.map.walls, 1)
     ys = [game_state.map.walls(i,2), game_state.map.walls(i,4)];
     line(xs, ys, 'Color','black', 'LineWidth',5);
 end
+for i=1:size(game_state.map.gnss_denied, 1)
+    pgon = polyshape(game_state.map.gnss_denied(i, 1:2:end), game_state.map.gnss_denied(i, 2:2:end));
+    plot(pgon, 'FaceColor', 'red', 'FaceAlpha', 0.1);
+end
 
 w = waitforbuttonpress;
 
@@ -78,15 +81,15 @@ while true
     % 4. Do measurements
     [game_state.measurement_distances, game_state.agent.raycasts] = perform_measurements(game_state.map, game_state.agent.pose, game_state.params.sensors);
     
-    % 5. Estimate current robot position
+    % 5. Measure GNSS position
+    game_state.gnss_pose = gnss_measure(game_state.agent.pose, game_state.map.gnss_denied);
+    
+    % 6. Estimate current robot position
     game_state.estimated_pose = [0, 0, 0];
     game_state.est_position_history = [game_state.est_position_history; game_state.estimated_pose];
     
-    % 6. Plan next motion command
+    % 7. Plan next motion command
     agent_motion_vector = [0, 0];
-    
-    % 7. Measure GNSS position - FOR KALMAN ONLY!
-    game_state.gnss_pose = gnss_measure(game_state.agent.pose);
     
     % GUI rendering
     h = render_game(game_state, h);
