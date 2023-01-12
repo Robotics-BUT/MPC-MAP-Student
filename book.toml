@@ -2,5 +2,5 @@
 authors = ["Adam Ligocki, Tomáš Lázna, Petr Gábrlík"]
 language = "en"
 multilingual = false
-src = "book"
+src = "book_src"
 title = "MPC-MAP"
