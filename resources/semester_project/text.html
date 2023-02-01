@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Motion Control - MPC-MAP</title>
+        <title>Semester Project - MPC-MAP</title>
 
 
         <!-- Custom HTML head -->
@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../resources/index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../resources/chapter_1_introduction/text.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../esources/chapter_2_sensor_modeling/text.html"><strong aria-hidden="true">2.</strong> Sensor Modeling</a></li><li class="chapter-item expanded "><a href="../../resources/chapter_3_motion_control/text.html" class="active"><strong aria-hidden="true">3.</strong> Motion Control</a></li><li class="chapter-item expanded "><a href="../../resources/chapter_4_particle_filter/text.html"><strong aria-hidden="true">4.</strong> Particle Filter</a></li><li class="chapter-item expanded "><a href="../../resources/chapter_5_kalman_filter/text.html"><strong aria-hidden="true">5.</strong> Kalman Filter</a></li><li class="chapter-item expanded "><a href="../../resources/chapter_6_path_planning/text.html"><strong aria-hidden="true">6.</strong> Path Planning</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../resources/index.html">Overview</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_1_sensor_modeling/text.html">Week 2 - Sensor Modeling</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_2_motion_control/text.html">Week 3 - Motion Control</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_3_particle_filter/text.html">Week 4 - Particle Filter</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_4_kalman_filter/text.html">Week 5 - Kalman Filter</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_5_path_planning/text.html">Week 6 - Path Planning</a></li><li class="chapter-item expanded affix "><a href="../../resources/semester_project/text.html" class="active">Semester Project</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -141,20 +141,40 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="motion-control"><a class="header" href="#motion-control">Motion Control</a></h1>
-<p>Bublebum</p>
+                        <h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
+<h2 id="-work-in-progress-"><a class="header" href="#-work-in-progress-">! Work in progress !</a></h2>
+<h2 id="cíle-projektu"><a class="header" href="#cíle-projektu">Cíle projektu</a></h2>
+<p>Cílem semestrálního projektu je vytvořit algoritmus pro předložený simulátor v Matlabu, pomocí kterého dojede robot do cíle v co nejmenším počtu iterací. Algoritmus musí fungovat pro různé mapy a pozice startu a cíle; robot nesmí narážet do překážek. Metody vhodné pro splnění zadání budou probrány na přednáškách a cvičeních, ne všechny musí být použity. Pro splnění zadání je možné pouze vyčítat data z laserového skeneru a nastavovat rychlosti robotu. Pro účely vizualizace je možné použít jakékoliv proměnné z workspace.</p>
+<h2 id="simulátor"><a class="header" href="#simulátor">Simulátor</a></h2>
+<p>Simulátor je dostupný v repozitáři: https://github.com/Robotics-BUT/MPC-MAP-Student Simulátor nesmí být modifikován, hodnotit se bude na předloženém simulátoru.</p>
+<h2 id="způsob-hodnocení"><a class="header" href="#způsob-hodnocení">Způsob hodnocení</a></h2>
+<p>Vytvořený algoritmus bude vyučujícími otestován na různých mapách s různými souřadnicemi startu a cíle. Úspěšnost dojetí do cíle a potřebný počet iterací bude vyhodnocen statisticky opakovaným spouštěním algoritmu.</p>
+<h2 id="odevzdání"><a class="header" href="#odevzdání">Odevzdání</a></h2>
+<p>Projekt odevzdejte ve formě komprimovaného souboru obsahující celý spustitelný projekt v Matlab elektronicky na email adam.ligocki@vutbr.cz do konce 10. týdne semestru (11. 4. 2022).</p>
+<h2 id="bodové-hodnocení"><a class="header" href="#bodové-hodnocení">Bodové hodnocení</a></h2>
+<h3 id="hodnocení-cvičení-během-semestru"><a class="header" href="#hodnocení-cvičení-během-semestru">Hodnocení cvičení během semestru:</a></h3>
+<ul>
+<li>Cvičení na model snímače: 10b</li>
+<li>Cvičení na motion control: 10b</li>
+<li>Cvičení na částicový filtr: 10b</li>
+<li>Cvičení na Kalmanův filtr: 10b</li>
+<li>Cvičení na plánování trajektorie: 10b </li>
+</ul>
+<h3 id="hodnocení-projektu"><a class="header" href="#hodnocení-projektu">Hodnocení projektu:</a></h3>
+<ul>
+<li>Úspěšnost dojetí do cíle: 10b</li>
+<li>Potřebný počet iterací: 10b</li>
+<li>Technické řešení: 30b</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../esources/chapter_2_sensor_modeling/text.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../resources/assignment_5_path_planning/text.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../resources/chapter_4_particle_filter/text.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -162,13 +182,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../esources/chapter_2_sensor_modeling/text.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../resources/assignment_5_path_planning/text.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../resources/chapter_4_particle_filter/text.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
