@@ -1,15 +1,15 @@
 # Summary
 
-[Introduction](./resources/README.md)
+[Overview](./resources/README.md)
 
-- [Introduction](resources/chapter_1_introduction/text.md)
+[Week 2 - Sensor Modeling](resources/assignment_1_sensor_modeling/text.md)
 
-- [Sensor Modeling](esources/chapter_2_sensor_modeling/text.md)
+[Week 3 - Motion Control](resources/assignment_2_motion_control/text.md)
 
-- [Motion Control](resources/chapter_3_motion_control/text.md)
+[Week 4 - Particle Filter](resources/assignment_3_particle_filter/text.md)
 
-- [Particle Filter](resources/chapter_4_particle_filter/text.md)
+[Week 5 - Kalman Filter](resources/assignment_4_kalman_filter/text.md)
 
-- [Kalman Filter](resources/chapter_5_kalman_filter/text.md)
+[Week 6 - Path Planning](resources/assignment_5_path_planning/text.md)
 
-- [Path Planning](resources/chapter_6_path_planning/text.md)
+[Semester Project](resources/semester_project/text.md)
