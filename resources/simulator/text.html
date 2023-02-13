@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>MPC-MAP</title>
-        <meta name="robots" content="noindex" />
+        <title>Simulator - MPC-MAP</title>
 
 
         <!-- Custom HTML head -->
@@ -13,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,7 +35,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -82,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="resources/index.html">Overview</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_1_sensor_modeling/text.html">Week 2 - Sensor Modeling</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_2_motion_control/text.html">Week 3 - Motion Control</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_3_particle_filter/text.html">Week 4 - Particle Filter</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_4_kalman_filter/text.html">Week 5 - Kalman Filter</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_5_path_planning/text.html">Week 6 - Path Planning</a></li><li class="chapter-item expanded affix "><a href="resources/simulator/text.html">Simulator</a></li><li class="chapter-item expanded affix "><a href="resources/semester_project/text.html">Semester Project</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../resources/index.html">Overview</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_1_sensor_modeling/text.html">Week 2 - Sensor Modeling</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_2_motion_control/text.html">Week 3 - Motion Control</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_3_particle_filter/text.html">Week 4 - Particle Filter</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_4_kalman_filter/text.html">Week 5 - Kalman Filter</a></li><li class="chapter-item expanded affix "><a href="../../resources/assignment_5_path_planning/text.html">Week 6 - Path Planning</a></li><li class="chapter-item expanded affix "><a href="../../resources/simulator/text.html" class="active">Simulator</a></li><li class="chapter-item expanded affix "><a href="../../resources/semester_project/text.html">Semester Project</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,7 +113,7 @@
                     <h1 class="menu-title">MPC-MAP</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -143,49 +142,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="readme"><a class="header" href="#readme">Readme</a></h1>
-<p>These are the online resources for the MPC-MAP course.</p>
-<p>See the semester project and assignment pages for detail information.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---sensor-modeling"><a class="header" href="#week-2---sensor-modeling">Week 2 - Sensor Modeling</a></h1>
-<p>Using MATLAB script, simulate the simple 1D map building process using the simulated measurement and self-proposed Sensor Model.</p>
-<p>Create a single A4 report that will describe your approach to the exercise (3-6 sentences for each task and picture, if makes sense).</p>
-<h2 id="task-1"><a class="header" href="#task-1">Task 1</a></h2>
-<p>Define parameters of your simulation</p>
-<ul>
-<li>Distance of the obstacle x</li>
-<li>Standard deviation of your sensor σ</li>
-<li>Discrete map parameters (cell size c and covered area d)</li>
-</ul>
-<p>Note: Choose these values with the idea of visualizing your simulation. The visual outputs simulated for parameters of x=100m and σ=0.001m c=0.001m, d=200m will be useless.</p>
-<h2 id="task-2"><a class="header" href="#task-2">Task 2</a></h2>
-<p>In the script file, implement the following functions:</p>
-<ul>
-<li>The “measure” function will return a single measurement sample with a normal distribution of (μ=obstacle_distance, σ=sensor_std_dev).</li>
-<li>The “get_positive_sensor_model”; p(z | m_o); function will return gaussian-based obstacle probability distribution function for the entire map space.</li>
-<li>Complementary implement also the “get_neg_sensor_model”; p(z | m_e).</li>
-</ul>
-<h2 id="task-3"><a class="header" href="#task-3">Task 3</a></h2>
-<p>Create a simulation of the mapping process. Generate 5-10 measurement samples and for each of them generate P(𝑚^o | 𝑧) distribution using the sensor model and update the probability distribution of the obstacles in the map P(𝑚^o).
-Document the simulation of the map building process with several images, especially the final state of the map model.</p>
-<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
-<p>p(z | m_o)_a - positive sensor model (prob. that cell a is occupied, if we measured distance z)</p>
-<p>p(z | m_e)_a - negative sensor model (prob. that cell a is empty, if we measured distance z)</p>
-<p>p(m_o | z)_a - inverse sensor model (map; probability that cell a is occupied, if we measured distance z) </p>
-<img src="resources/assignment_1_sensor_modeling/imgs/sm.png" alt="sensor model" width="50%"/>
-<img src="resources/assignment_1_sensor_modeling/imgs/ism.png" alt="inverse sensor model" width="50%"/>
-<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Send the report and all related MATLAB scripts at adam.ligocki@vutbr.cz.
-MATLAB script must be executable without errors and has to generate all graphical outputs that are in the report.
-Deadline: Spring Semester 2023, Week 1, Sunday 23:59.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion Control</a></h1>
-<p>Bublebum</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
-<p>Bublebum</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-5---kalman-filter"><a class="header" href="#week-5---kalman-filter">Week 5 - Kalman Filter</a></h1>
-<p>Bublebum</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-6---path-planning"><a class="header" href="#week-6---path-planning">Week 6 - Path Planning</a></h1>
-<p>Bublebum</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
+                        <h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
 <p>The simulator is lightweight, MATLAB-based tool for testing key algorithms utilized for navigation in mobile robotics. Basically, it integrates differential drive mobile robot model equipped with two different sensors (LiDAR and GNSS), and  enables to deploy it within custom 2D maps. The main goal is to navigate the robot from start to goal position; for this reason, several algorithms must be implemented:</p>
 <ul>
 <li><strong>Localization</strong>: two algorithms are needed - for outddor and indoor. The pose may be estimated via Extended Kalman Filter and GNSS data in outdoor areas; for indoor, the algorithm utilizing Particle Filter and known map is more suitable since there is a GNSS denied zone indoor.</li>
@@ -221,38 +178,19 @@ Deadline: Spring Semester 2023, Week 1, Sunday 23:59.</p>
 <h2 id="maps-and-testing"><a class="header" href="#maps-and-testing">Maps and testing</a></h2>
 <p>The <code>resources</code> directory contains several maps in the text file format, which are parsed in real-time when the simulation is started. Use reverse engineering to understand the syntax, and create own maps to test your algorithms thoroughly. In general, the syntax includes the definition of the goal position, map dimensions, wall positions, and GNSS-denied polygons. Do not forget to test various start poses as well (including start angle!); this is adjustable via <code>start_position</code> variable. For the project evaluation, a comprehensive map comprising both indoor and outdoor areas and GNSS-denied zones will be employed.</p>
 <h2 id="gui"><a class="header" href="#gui">GUI</a></h2>
-<img src="resources/simulator/imgs/mpc-map-legend.png" alt="sensor model" width="100%"/>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
-<h2 id="-work-in-progress-"><a class="header" href="#-work-in-progress-">! Work in progress !</a></h2>
-<h2 id="cíle-projektu"><a class="header" href="#cíle-projektu">Cíle projektu</a></h2>
-<p>Cílem semestrálního projektu je vytvořit algoritmus pro předložený simulátor v Matlabu, pomocí kterého dojede robot do cíle v co nejmenším počtu iterací. Algoritmus musí fungovat pro různé mapy a pozice startu a cíle; robot nesmí narážet do překážek. Metody vhodné pro splnění zadání budou probrány na přednáškách a cvičeních, ne všechny musí být použity. Pro splnění zadání je možné pouze vyčítat data z laserového skeneru a nastavovat rychlosti robotu. Pro účely vizualizace je možné použít jakékoliv proměnné z workspace.</p>
-<h2 id="simulátor"><a class="header" href="#simulátor">Simulátor</a></h2>
-<p>Simulátor je dostupný v repozitáři: https://github.com/Robotics-BUT/MPC-MAP-Student Simulátor nesmí být modifikován, hodnotit se bude na předloženém simulátoru.</p>
-<h2 id="způsob-hodnocení"><a class="header" href="#způsob-hodnocení">Způsob hodnocení</a></h2>
-<p>Vytvořený algoritmus bude vyučujícími otestován na různých mapách s různými souřadnicemi startu a cíle. Úspěšnost dojetí do cíle a potřebný počet iterací bude vyhodnocen statisticky opakovaným spouštěním algoritmu.</p>
-<h2 id="odevzdání"><a class="header" href="#odevzdání">Odevzdání</a></h2>
-<p>Projekt odevzdejte ve formě komprimovaného souboru obsahující celý spustitelný projekt v Matlab elektronicky na email adam.ligocki@vutbr.cz do konce 10. týdne semestru (11. 4. 2022).</p>
-<h2 id="bodové-hodnocení"><a class="header" href="#bodové-hodnocení">Bodové hodnocení</a></h2>
-<h3 id="hodnocení-cvičení-během-semestru"><a class="header" href="#hodnocení-cvičení-během-semestru">Hodnocení cvičení během semestru:</a></h3>
-<ul>
-<li>Cvičení na model snímače: 10b</li>
-<li>Cvičení na motion control: 10b</li>
-<li>Cvičení na částicový filtr: 10b</li>
-<li>Cvičení na Kalmanův filtr: 10b</li>
-<li>Cvičení na plánování trajektorie: 10b </li>
-</ul>
-<h3 id="hodnocení-projektu"><a class="header" href="#hodnocení-projektu">Hodnocení projektu:</a></h3>
-<ul>
-<li>Úspěšnost dojetí do cíle: 10b</li>
-<li>Potřebný počet iterací: 10b</li>
-<li>Technické řešení: 30b</li>
-</ul>
+<img src="imgs/mpc-map-legend.png" alt="sensor model" width="100%"/>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../resources/assignment_5_path_planning/text.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="../../resources/semester_project/text.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -260,7 +198,13 @@ Deadline: Spring Semester 2023, Week 1, Sunday 23:59.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../resources/assignment_5_path_planning/text.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="../../resources/semester_project/text.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -273,21 +217,16 @@ Deadline: Spring Semester 2023, Week 1, Sunday 23:59.</p>
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>
