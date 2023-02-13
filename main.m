@@ -12,7 +12,7 @@ start_position = [1, 1, pi/2]; % (x, y, theta)
 agent_motion_vector = [0, 0]; % (vR, vL)
 
 % I. Build map
-read_only_vars.map = load_map("resources/outdoor_1.txt");
+read_only_vars.map = load_map("resources/indoor_1.txt");
 read_only_vars.map.discretization_step = 0.2;
 read_only_vars.discrete_map = generate_discrete_map(read_only_vars.map);
 read_only_vars.map.goal_tolerance = 0.5;
@@ -26,7 +26,7 @@ read_only_vars.agent_drive.interwheel_dist = 0.2; % in case of diff drive
 read_only_vars.agent_drive.max_vel = 1;
 read_only_vars.measurement_distances = [];
 read_only_vars.gnss_pose = [];
-public_vars.estimated_pose = [];
+
 
 % III. Set other given parameters
 read_only_vars.sensors = [0, 45, 90, 135, 180, 225, 270, 315] / 180 * pi; % (rad)
@@ -34,9 +34,11 @@ read_only_vars.sampling_period = 0.1; % (s)
 read_only_vars.max_particles = 1000; % (-)
 
 % IV. Init variables for visualization
-public_vars.est_position_history = []; % row = (x,y,theta)
+public_vars.estimated_pose = [];
 public_vars.path = []; % row = (x,y)
 public_vars.particles = []; % Nx3..m matrix, row = (x,y,theta, ...)
+
+public_vars.est_position_history = []; % row = (x,y,theta)
 public_vars.gnss_history = [];
 
 % V. Init vizualization
@@ -100,7 +102,7 @@ while true
         break;
     end
     
-    % 6. Do measurements
+    % 6. Do Lidar measurements
     [read_only_vars.measurement_distances, private_vars.raycasts] = perform_measurements(read_only_vars.map, private_vars.agent_pose, read_only_vars.sensors);
     
     % 7. Measure GNSS position
@@ -111,10 +113,13 @@ while true
     public_vars.estimated_pose = [0, 0, 0]; % (x,y,theta)
     public_vars.est_position_history = [public_vars.est_position_history; public_vars.estimated_pose];
     
-    % 9. Plan next motion command
+    % 9. Path planning
+    public_vars.path = [];
+    
+    % 10. Plan next motion command
     agent_motion_vector = [0.5, 0.5];
     
-    % 10. GUI rendering
+    % 11. GUI rendering
     h = render_game(private_vars, read_only_vars, public_vars, h);
    
 end
