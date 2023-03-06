@@ -8,7 +8,7 @@
 
 [Week 4 - Particle Filter](resources/assignment_3_particle_filter/text.md)
 
-[Week 5 - Kalman Filter](resources/assignment_4_kalman_filter/text.md)
+[Week 5 - Kalman Filter and EKF](resources/assignment_4_kalman_filter/text.md)
 
 [Week 6 - Path Planning](resources/assignment_5_path_planning/text.md)
 
