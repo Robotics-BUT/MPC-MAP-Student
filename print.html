@@ -223,19 +223,18 @@ Deadline: 5 March 2023, 23:59.</p>
 <p>Create a single A4 report that will describe your approach to the exercise (3-6 sentences for each task and picture, if makes sense).</p>
 <h2 id="task-1-3"><a class="header" href="#task-1-3">Task 1</a></h2>
 <p>Load the <code>outdoor_1</code> map from the resources and manually design a trajectory between the start pose <code>[2,2,π/2]</code> and the goal location <code>[16,2]</code>.</p>
-<h2 id="task-2-3"><a class="header" href="#task-2-3">Task 2</a></h2>
 <p>Examine the noisy positioning data <code>[x,y]</code> provided by the <code>gnss_measure</code> function, and determine variance for <code>x</code> and <code>y</code> values. You will employ the measurements and variances for the correction step within the following tasks.</p>
-<h2 id="task-3-3"><a class="header" href="#task-3-3">Task 3</a></h2>
+<h2 id="task-2-3"><a class="header" href="#task-2-3">Task 2</a></h2>
 <p>As you use a differential wheeled robot, there is a nonlinearity in the state and control transition (nonlinear function <em>g(x)</em>); thus, you must employ the EKF for the prediction step. Implement <code>ekf_predict</code> function for given drive type.</p>
 <p>On the other hand, the KF is appropriate for the correction phase, since there is a linear relation between the state and measurement. Implement <code>kf_correct</code> function.</p>
-<h2 id="task-4"><a class="header" href="#task-4">Task 4</a></h2>
+<h2 id="task-3-3"><a class="header" href="#task-3-3">Task 3</a></h2>
 <p>Use the known initial pose <code>x=[2,2,π/2]</code> and Σ with zeros (i.e., high certainty) as the initial belief for the EKF algorithm and navigate the robot along your trajectory to the goal location. Only the KF-based estimated pose can be utilized for the control. You already know the GNSS variances to assemble the <code>Q</code> matrix (measurement noise covariance); for the process noise, apply variances 0.01 (a rough initial estimate) to all variables and tune the <code>R</code> matrix to reach an optimal performance. Capture the result.</p>
-<h2 id="task-5"><a class="header" href="#task-5">Task 5</a></h2>
+<h2 id="task-4"><a class="header" href="#task-4">Task 4</a></h2>
 <p>Verify the algorithm behavior with various initial beliefs (remember the start pose will not be known in the project) and observe, how the estimated pose converges to the real pose values. Capture the result.</p>
 <h2 id="submission-3"><a class="header" href="#submission-3">Submission</a></h2>
 <p>Send the report and <code>zip</code> archive comprising your solution at petr.gabrlik@vut.cz.
 MATLAB script (<code>main.m</code>) must be executable without any errors and has to generate a graphical output illustrating a successful navigation.</p>
-<p>Deadline: 12th Mar 2022, 23:59.</p>
+<p>Deadline: 12th Mar 2023, 23:59.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-6---path-planning"><a class="header" href="#week-6---path-planning">Week 6 - Path Planning</a></h1>
 <p>Bublebum</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
