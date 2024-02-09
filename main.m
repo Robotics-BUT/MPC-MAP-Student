@@ -30,11 +30,11 @@ read_only_vars.agent_drive.type = 2; % 1 = omnidirectional drive, 2 = differenti
 read_only_vars.agent_drive.interwheel_dist = 0.2; % in case of diff drive
 read_only_vars.agent_drive.max_vel = 1;
 read_only_vars.measurement_distances = [];
-read_only_vars.gnss_pose = [];
+read_only_vars.gnss_position = [];
 
 
 % III. Set other given parameters
-read_only_vars.sensors = [0, 45, 90, 135, 180, 225, 270, 315] / 180 * pi; % (rad)
+read_only_vars.lidar_config = [0, 45, 90, 135, 180, 225, 270, 315] / 180 * pi; % (rad)
 read_only_vars.sampling_period = 0.1; % (s)
 read_only_vars.max_particles = 1000; % (-)
 read_only_vars.counter = 1;
@@ -44,8 +44,8 @@ public_vars.estimated_pose = [];
 public_vars.path = []; % row = (x,y)
 public_vars.particles = []; % Nx3..m matrix, row = (x,y,theta, ...)
 
-public_vars.est_position_history = nan(1,3); % row = (x,y,theta)
-public_vars.gnss_history = [];
+read_only_vars.est_position_history = nan(1,3); % row = (x,y,theta)
+read_only_vars.gnss_history = [];
 
 % V. Init vizualization
 figure(1);
@@ -106,64 +106,25 @@ while true
     end
     
     % 5. Do Lidar measurements
-    [read_only_vars.measurement_distances, private_vars.raycasts] = perform_measurements(read_only_vars.map, private_vars.agent_pose, read_only_vars.sensors);
+    [read_only_vars.lidar_distances, private_vars.raycasts] = lidar_measure(read_only_vars.map, private_vars.agent_pose, read_only_vars.lidar_config);
     
     % 6. Measure GNSS position
-    read_only_vars.gnss_pose = gnss_measure(private_vars.agent_pose, read_only_vars.map.gnss_denied);
-    public_vars.gnss_history = [public_vars.gnss_history; read_only_vars.gnss_pose];
+    read_only_vars.gnss_position = gnss_measure(private_vars.agent_pose, read_only_vars.map.gnss_denied);
+    read_only_vars.gnss_history = [read_only_vars.gnss_history; read_only_vars.gnss_position];
       
+    % 7.-12. Student workspace
+    public_vars = student_workspace(read_only_vars, public_vars);
     
-    % 7. Evaluate environment (indoor / outdoor)
-    public_vars = eval_environment(read_only_vars, public_vars);
+    read_only_vars.est_position_history = [read_only_vars.est_position_history; public_vars.estimated_pose];
     
-    % 8. Perform initialization procedure (first iteration)
-    if (read_only_vars.counter == 1)
-        public_vars = init_procedure(read_only_vars, public_vars);
-    end
-        
-    % 9. Initialize filters
-    if (read_only_vars.counter == public_vars.init_iterations)
-        
-        if public_vars.pf_enabled            
-            public_vars = init_particle_filter(read_only_vars, public_vars);
-        end
-                
-        if public_vars.kf_enabled
-            public_vars = init_kalman_filter(read_only_vars, public_vars);
-        end
-        
-    elseif (read_only_vars.counter > public_vars.init_iterations)
-                
-        % 10. Update particle filter
-        if public_vars.pf_enabled
-            public_vars.particles = update_particle_filter(read_only_vars, public_vars);
-        end
-        
-        % 11. Update Kalman filter
-        if public_vars.kf_enabled
-            [public_vars.mu, public_vars.sigma] = update_kalman_filter(read_only_vars, public_vars);
-        end
-        
-        % 12. Estimate current robot position
-        public_vars.estimated_pose = estimate_pose(public_vars); % (x,y,theta)
-        public_vars.est_position_history = [public_vars.est_position_history; public_vars.estimated_pose];
-
-        % 13. Path planning
-        public_vars.path = plan_path(read_only_vars, public_vars);
-
-        % 14. Plan next motion command
-        public_vars = plan_motion(read_only_vars, public_vars);
-    
-    end
-    
-    % 15. Move robot
+    % 13. Move robot
     private_vars.agent_pose = move_agent(private_vars.agent_pose, public_vars.motion_vector, read_only_vars.agent_drive, read_only_vars.sampling_period);  
     private_vars.agent_position_history = [private_vars.agent_position_history; private_vars.agent_pose];    
     
-    % 16. GUI rendering
+    % 14. GUI rendering
     h = render_game(private_vars, read_only_vars, public_vars, h);
     
-    % 17. Increment counter
+    % 15. Increment counter
     read_only_vars.counter = read_only_vars.counter + 1;
    
 end

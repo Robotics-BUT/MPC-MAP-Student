@@ -26,25 +26,23 @@ The simulator workspace comprise *main* script stored in `main.m`, which contain
 4. **Check particles**: check the particle limit.
 5. **Lidar measurement**: read the lidar data and save them into the `read_only_vars` structure.
 6. **GNSS measurement**: read the GNSS data and save them into the `read_only_vars` structure.
-7. **Evaluate environment**: student function, can be used to handle switching between environments and related tasks.
-8. **Initialization procedure**: student function, is called in the first iteration only.
-9. **Initialize filters**: student functions, called when the iteration counter reaches modifiable `init_iterations` value. *Note*: depends on `pf_enabled` / `kf_enabled` flags.
-10. **Update particle filter**: student function, modifies the set of particles used in your **particle filter** algorithm. *Note*: depends on `pf_enabled` flag.
-11. **Update Kalman filter**: student function, modifies the mean and variance used in your **Kalman filter** algorithm. *Note*: depends on `kf_enabled` flag.
-12. **Estimate pose**: student function, use the filters outputs to acquire the estimate.
-13. **Path planning**: student function, returns the result of your **path planning** algorithm.
-14. **Plan motion**: student function, returns the result of your **motion control** algorithm. Save the result into the `motion_vector` variable (`[v_right, v_left]`). 
-15. **Move robot**: physically moves the robot according the `motion_vector` control variable.
-16. **GUI rendering**: render the simulator state in a Figure window.
-17. **Increment counter**: modifies read-only variable `counter` to record the number of finished iterations. 
+7. **Initialization procedure**: by default, it is called in the first iteration only; used to init filters and other tasks performed only once.
+8. **Update particle filter**: modifies the set of particles used in your **particle filter** algorithm.
+9. **Update Kalman filter**: modifies the mean and variance used in your **Kalman filter** algorithm.
+10. **Estimate pose**: use the filters outputs to acquire the estimate.
+11. **Path planning**: returns the result of your **path planning** algorithm.
+12. **Plan motion**: returns the result of your **motion control** algorithm. Save the result into the `motion_vector` variable (`[v_right, v_left]`).
+13. **Move robot**: physically moves the robot according the `motion_vector` control variable.
+14. **GUI rendering**: render the simulator state in a Figure window.
+15. **Increment counter**: modifies read-only variable `counter` to record the number of finished iterations. 
 
-Steps 10 to 14 are performed after the initialization only.
+Steps 7 to 12 are located in a separate `student_workspace.m` function.
 
 You should be able to complete all the assignments witnout modifying the `main.m` file.
 
 ## Custom Functions
 
-You are welcome to add as many custom functions in the *algorithms* folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the *kalman_filter* folder). You may also arbitrarily modify contents (**not headers**) of the student functions called from the *main* (steps 7 to 14 of the simulation loop).  
+You are welcome to add as many custom functions in the *algorithms* folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the *kalman_filter* folder). You may also arbitrarily modify the content (**not header**) of the *student workspace* function (steps 7 to 12 of the simulation loop) and other functions called by it.  
 
 ## Maps and testing
 
