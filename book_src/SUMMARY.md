@@ -2,7 +2,7 @@
 
 [Overview](./resources/README.md)
 
-[Week 2 - Sensor Modeling](resources/assignment_1_sensor_modeling/text.md)
+[Week 2 - Uncertainty](resources/assignment_1_uncertainty/text.md)
 
 [Week 3 - Motion Control](resources/assignment_2_motion_control/text.md)
 
