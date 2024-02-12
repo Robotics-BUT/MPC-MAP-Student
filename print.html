@@ -178,6 +178,22 @@
 <p>These are the online resources for the MPC-MAP course.</p>
 <p>See the semester project and assignment pages for detail information.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
+<p>The goal of this assignment is to get familiar with the simulator, and explore uncertainties in the sensors and motion.</p>
+<h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
+<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="resources/assignment_1_uncertainty/resources/simulator/text.html">Simulator</a> section). Focuse your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
+<h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
+<p>The robot is equipped with 8-way LiDAR and GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing static robot (zero velocities) into suitable maps, and reading the data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across the individual LiDAR channels, and across both GNSS axes. Plot histograms of the measurements.</p>
+<h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
+<p>Use the measurements from the previous step, and MATLAB internal <code>cov</code> function to assemble covariance matrix for both sensors. Verify the resultant matrix is of size 8x8 and 2x2 for the LiDAR and GNSS, respectively. Verify the values on the main diagonal equal to <code>sigma^2</code>, i.e. equal to <code>variance=std^2</code>.</p>
+<h2 id="task-4--normal-distribution"><a class="header" href="#task-4--normal-distribution">Task 4 – Normal distribution</a></h2>
+<p>Create a function <code>norm_pdf</code> for assembling probability density function (<em>pdf</em>) of the normal distribution. The function accepts three arguments: <code>x</code> (values at which to evaluate the <em>pdf</em>), <code>mu</code> (mean), and <code>sigma</code> (standard deviation). Utilize this function and <code>sigma</code> values from the Task 2 (e.g. for the <em>1st</em> LiDAR and <em>X</em> GNSS axis) to generate two <em>pdf</em>s illustrating the noise characteristics of the robots sensors, and plot it into one image (use <code>mu=0</code> in both cases).</p>
+<h2 id="task-5--motion-uncertainty"><a class="header" href="#task-5--motion-uncertainty">Task 5 – Motion uncertainty</a></h2>
+<p>The uncertainty is not just in the measurement (in the sensor data), but in the motion as well. Load the <code>indoor_1</code> map and try to navigate the robot to the goal location without using sensors. To do so, apply a proper sequence of motion commands inside the <code>plan_motion.m</code> function. Save the screenshot of the successful run and discuss, what could be the potential source of uncertainty in the robot motion.</p>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Create a single A4 report that will describe your approach to the exercise (few sentences for each task and an image, if makes sense).</p>
+<p>Send the report and <code>zip</code> archive comprising the simulator with your solution at gabrlik@vut.cz.</p>
+<p>The MATLAB script (<code>main.m</code>) must be executable without any errors and has to generate the graphical outputs contained in the report.</p>
+<p>Deadline: 18th Feb 2024, 23:59.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion Control</a></h1>
 <p>Get acquainted with the simulator utilized for the semestral project and implement a simple path-following algorithm.</p>
 <p>Create a single A4 report that will describe your approach to the exercise (3-6 sentences for each task and a picture, if it makes sense).</p>
@@ -194,7 +210,7 @@
 <p>A trajectory is defined as a sequence of (x, y) waypoints. Note that the trajectory stored in the <code>public_vars.path</code> variable is visualized by the simulator.</p>
 <h2 id="task-3"><a class="header" href="#task-3">Task 3</a></h2>
 <p>Choose arbitrary path-following algorithm and implement it to make the robot follow a straight line. Use the variable <code>private_vars.agent_pose</code> to get the true pose of the robot. Discuss how parameters of the chosen method affect the quality of the robot control.</p>
-<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
 <p>Send the report and all related MATLAB scripts to <a href="mailto:resources/assignment_2_motion_control/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a>.
 MATLAB script must be executable without any errors and has to generate all graphical outputs that are in the report.
 Deadline: 26 February 2023, 23:59.</p>
@@ -213,7 +229,7 @@ the ray in radians. The function returns all intersection of the given ray with 
 <p>Initialize a set of particles at random poses within the map. Implement the resampling algorithm and make the particles converge to the actual agent pose via an appropriate weighting
 function (apply the outcomes of the previous task). You should be able to present a screenshot with a cluster of particles gathered around the agent. You may need to move the agent
 to make the particles converge.</p>
-<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
+<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
 <p>Send the report and all related MATLAB scripts to <a href="mailto:resources/assignment_3_particle_filter/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a>.
 MATLAB script must be executable without any errors and has to generate all graphical outputs that are in the report.
 Deadline: 5 March 2023, 23:59.</p>
@@ -230,7 +246,7 @@ Deadline: 5 March 2023, 23:59.</p>
 <p>Use the known initial pose <code>x=[2,2,π/2]</code> and Σ with zeros (i.e., high certainty) as the initial belief for the EKF algorithm and navigate the robot along your trajectory to the goal location. Only the KF-based estimated pose can be utilized for the control. You already know the GNSS variances to assemble the <code>Q</code> matrix (measurement noise covariance); for the process noise, apply variances 0.01 (a rough initial estimate) to all variables and tune the <code>R</code> matrix to reach an optimal performance. Capture the result.</p>
 <h2 id="task-4"><a class="header" href="#task-4">Task 4</a></h2>
 <p>Verify the algorithm behavior with various initial beliefs (remember the start pose will not be known in the project) and observe, how the estimated pose converges to the real pose values. Capture the result.</p>
-<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
+<h2 id="submission-3"><a class="header" href="#submission-3">Submission</a></h2>
 <p>Send the report and <code>zip</code> archive comprising your solution at petr.gabrlik@vut.cz.
 MATLAB script (<code>main.m</code>) must be executable without any errors and has to generate a graphical output illustrating a successful navigation.</p>
 <p>Deadline: 12th Mar 2023, 23:59.</p>
@@ -243,7 +259,7 @@ MATLAB script (<code>main.m</code>) must be executable without any errors and ha
 <p>Adjust the planning algorithm to keep clearance from obstacles. You may use any method. The clearance should be at least 0.3 m.</p>
 <h2 id="task-3-3"><a class="header" href="#task-3-3">Task 3</a></h2>
 <p>Apply a smoothing algorithm to generated paths. Use the iterative algorithm provided in the lecture. Discuss the effect of the algorithm parameters.</p>
-<h2 id="submission-3"><a class="header" href="#submission-3">Submission</a></h2>
+<h2 id="submission-4"><a class="header" href="#submission-4">Submission</a></h2>
 <p>Send the report and all related MATLAB scripts to <a href="mailto:resources/assignment_5_path_planning/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a>.
 MATLAB script must be executable without any errors and has to generate all graphical outputs that are in the report.
 Deadline: 19 March 2023, 23:59.</p>
