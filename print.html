@@ -180,7 +180,7 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
 <p>The goal of this assignment is to get familiar with the simulator, and explore uncertainties in the sensors and motion.</p>
 <h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
-<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="resources/assignment_1_uncertainty/resources/simulator/text.html">Simulator</a> section). Focuse your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
+<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section). Focuse your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
 <h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
 <p>The robot is equipped with 8-way LiDAR and GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing static robot (zero velocities) into suitable maps, and reading the data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across the individual LiDAR channels, and across both GNSS axes. Plot histograms of the measurements.</p>
 <h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
@@ -191,7 +191,7 @@
 <p>The uncertainty is not just in the measurement (in the sensor data), but in the motion as well. Load the <code>indoor_1</code> map and try to navigate the robot to the goal location without using sensors. To do so, apply a proper sequence of motion commands inside the <code>plan_motion.m</code> function. Save the screenshot of the successful run and discuss, what could be the potential source of uncertainty in the robot motion.</p>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
 <p>Create a single A4 report that will describe your approach to the exercise (few sentences for each task and an image, if makes sense).</p>
-<p>Send the report and <code>zip</code> archive comprising the simulator with your solution at gabrlik@vut.cz.</p>
+<p>Send the report and <code>zip</code> archive comprising the simulator with your solution at <code>gabrlik@vut.cz</code>.</p>
 <p>The MATLAB script (<code>main.m</code>) must be executable without any errors and has to generate the graphical outputs contained in the report.</p>
 <p>Deadline: 18th Feb 2024, 23:59.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion Control</a></h1>
