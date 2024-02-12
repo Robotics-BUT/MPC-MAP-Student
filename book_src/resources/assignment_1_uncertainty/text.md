@@ -24,7 +24,7 @@ The uncertainty is not just in the measurement (in the sensor data), but in the 
 
 ## Submission
 
-To implement the tasks, use the `algorithm` directory only, do not modify the rest of the simulator. The solution must work in the fresh simulator without any errors, and must generate the graphical outputs contained in the report
+To implement the tasks, use the `algorithm` directory only; do not modify the rest of the simulator. The solution must work in the fresh simulator without any errors, and must generate the graphical outputs contained in the report.
 
 Create a single A4 report that will briefly describe your solution (few sentences for each task and an image, if makes sense).
 
