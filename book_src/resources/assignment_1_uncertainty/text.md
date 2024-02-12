@@ -24,10 +24,8 @@ The uncertainty is not just in the measurement (in the sensor data), but in the 
 
 ## Submission
 
-Create a single A4 report that will describe your approach to the exercise (few sentences for each task and an image, if makes sense).
+To implement the tasks, use the `algorithm` directory only, do not modify the rest of the simulator. The solution must work in the fresh simulator without any errors, and must generate the graphical outputs contained in the report
 
-Send the report and `zip` archive comprising the simulator with your solution at `gabrlik@vut.cz`.
+Create a single A4 report that will briefly describe your solution (few sentences for each task and an image, if makes sense).
 
-The MATLAB script (`main.m`) must be executable without any errors and has to generate the graphical outputs contained in the report.
-
-Deadline: 18th Feb 2024, 23:59.
+Send the report and `zip` archive comprising the `algorithm` directory to the lecturer's e-mail by Sunday 23:59 of the given week of the semester.
