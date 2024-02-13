@@ -26,23 +26,26 @@ The simulator workspace comprise *main* script stored in `main.m`, which contain
 4. **Check particles**: check the particle limit.
 5. **Lidar measurement**: read the lidar data and save them into the `read_only_vars` structure.
 6. **GNSS measurement**: read the GNSS data and save them into the `read_only_vars` structure.
-7. **Initialization procedure**: by default, it is called in the first iteration only; used to init filters and other tasks performed only once.
-8. **Update particle filter**: modifies the set of particles used in your **particle filter** algorithm.
-9. **Update Kalman filter**: modifies the mean and variance used in your **Kalman filter** algorithm.
-10. **Estimate pose**: use the filters outputs to acquire the estimate.
-11. **Path planning**: returns the result of your **path planning** algorithm.
-12. **Plan motion**: returns the result of your **motion control** algorithm. Save the result into the `motion_vector` variable (`[v_right, v_left]`).
-13. **Move robot**: physically moves the robot according the `motion_vector` control variable.
-14. **GUI rendering**: render the simulator state in a Figure window.
-15. **Increment counter**: modifies read-only variable `counter` to record the number of finished iterations. 
+7. **MoCap measurement**: read the reference pose from a motion capture system and save it into the `read_only_vars` structure.  
+8. **Initialization procedure**: by default, it is called in the first iteration only; used to init filters and other tasks performed only once.
+9. **Update particle filter**: modifies the set of particles used in your **particle filter** algorithm.
+10. **Update Kalman filter**: modifies the mean and variance used in your **Kalman filter** algorithm.
+11. **Estimate pose**: use the filters outputs to acquire the estimate.
+12. **Path planning**: returns the result of your **path planning** algorithm.
+13. **Plan motion**: returns the result of your **motion control** algorithm. Save the result into the `motion_vector` variable (`[v_right, v_left]`).
+14. **Move robot**: physically moves the robot according the `motion_vector` control variable.
+15. **GUI rendering**: render the simulator state in a Figure window.
+16. **Increment counter**: modifies read-only variable `counter` to record the number of finished iterations. 
 
-Steps 7 to 12 are located in a separate `student_workspace.m` function.
+Steps 8 to 13 are located in a separate `student_workspace.m` function.
+
+**Warning!** Step 7 is going to be skipped during the final project evaluation. Your solution **must not** rely on MoCap data!
 
 You should be able to complete all the assignments witnout modifying the `main.m` file.
 
 ## Custom Functions
 
-You are welcome to add as many custom functions in the *algorithms* folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the *kalman_filter* folder). You may also arbitrarily modify the content (**not header**) of the *student workspace* function (steps 7 to 12 of the simulation loop) and other functions called by it.  
+You are welcome to add as many custom functions in the *algorithms* folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the *kalman_filter* folder). You may also arbitrarily modify the content (**not header**) of the *student workspace* function (steps 8 to 13 of the simulation loop) and other functions called by it.  
 
 ## Maps and testing
 

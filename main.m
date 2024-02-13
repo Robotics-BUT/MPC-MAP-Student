@@ -111,20 +111,25 @@ while true
     % 6. Measure GNSS position
     read_only_vars.gnss_position = gnss_measure(private_vars.agent_pose, read_only_vars.map.gnss_denied);
     read_only_vars.gnss_history = [read_only_vars.gnss_history; read_only_vars.gnss_position];
+    
+    % 7. Measure MoCap pose
+    % WARNING: This sensor can be used for development and debug only.
+    % Following line will be commented out in the final project evaluation!
+    read_only_vars.mocap_pose = mocap_measure(private_vars.agent_pose, read_only_vars.map.gnss_denied);
       
-    % 7.-12. Student workspace
+    % 8.-13. Student workspace
     public_vars = student_workspace(read_only_vars, public_vars);
     
     read_only_vars.est_position_history = [read_only_vars.est_position_history; public_vars.estimated_pose];
     
-    % 13. Move robot
+    % 14. Move robot
     private_vars.agent_pose = move_agent(private_vars.agent_pose, public_vars.motion_vector, read_only_vars.agent_drive, read_only_vars.sampling_period);  
     private_vars.agent_position_history = [private_vars.agent_position_history; private_vars.agent_pose];    
     
-    % 14. GUI rendering
+    % 15. GUI rendering
     h = render_game(private_vars, read_only_vars, public_vars, h);
     
-    % 15. Increment counter
+    % 16. Increment counter
     read_only_vars.counter = read_only_vars.counter + 1;
    
 end
