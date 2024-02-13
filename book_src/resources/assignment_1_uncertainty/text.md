@@ -4,7 +4,7 @@ The goal of this assignment is to get familiar with the simulator, and explore u
 
 ## Task 1 – The simulator
 
-Download the simulator from GitHub [https://github.com/Robotics-BUT/MPC-MAP-Student](https://github.com/Robotics-BUT/MPC-MAP-Student), and get familiar with it (see the [Simulator](https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html) section). Focuse your attention on the `private_vars`, `read_only_vars` and `public_vars` data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.
+Download the simulator from GitHub [https://github.com/Robotics-BUT/MPC-MAP-Student](https://github.com/Robotics-BUT/MPC-MAP-Student), and get familiar with it (see the [Simulator](https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html) section). Focus your attention on the `private_vars`, `read_only_vars` and `public_vars` data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.
 
 ## Task 2 – Sensor uncertainty
 

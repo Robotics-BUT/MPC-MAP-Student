@@ -12,6 +12,6 @@
 
 [Week 6 - Path Planning](resources/assignment_5_path_planning/text.md)
 
-[Simulator](resources/simulator/text.md)
-
 [Semester Project](resources/semester_project/text.md)
+
+[Simulator](resources/simulator/text.md)

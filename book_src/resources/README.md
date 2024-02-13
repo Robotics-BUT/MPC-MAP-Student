@@ -1,5 +1,5 @@
 # Readme
 
-These are the online resources for the MPC-MAP course.
+This documentation contains weekly assignments for the MPC-MAP course as well as the semester project assignment and a brief description of the simulating tool.
 
-See the semester project and assignment pages for detail information.
+Please note that the documentation is continuously updated, the final version of the assignment will be available at the beginning of the given week. The same applies for the semester project – the assignment will be introduced by a lecturer during the semester.
