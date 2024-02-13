@@ -222,6 +222,7 @@
 <li><strong>Check particles</strong>: check the particle limit.</li>
 <li><strong>Lidar measurement</strong>: read the lidar data and save them into the <code>read_only_vars</code> structure.</li>
 <li><strong>GNSS measurement</strong>: read the GNSS data and save them into the <code>read_only_vars</code> structure.</li>
+<li><strong>MoCap measurement</strong>: read the reference pose from a motion capture system and save it into the <code>read_only_vars</code> structure.</li>
 <li><strong>Initialization procedure</strong>: by default, it is called in the first iteration only; used to init filters and other tasks performed only once.</li>
 <li><strong>Update particle filter</strong>: modifies the set of particles used in your <strong>particle filter</strong> algorithm.</li>
 <li><strong>Update Kalman filter</strong>: modifies the mean and variance used in your <strong>Kalman filter</strong> algorithm.</li>
@@ -232,10 +233,11 @@
 <li><strong>GUI rendering</strong>: render the simulator state in a Figure window.</li>
 <li><strong>Increment counter</strong>: modifies read-only variable <code>counter</code> to record the number of finished iterations.</li>
 </ol>
-<p>Steps 7 to 12 are located in a separate <code>student_workspace.m</code> function.</p>
+<p>Steps 8 to 13 are located in a separate <code>student_workspace.m</code> function.</p>
+<p><strong>Warning!</strong> Step 7 is going to be skipped during the final project evaluation. Your solution <strong>must not</strong> rely on MoCap data!</p>
 <p>You should be able to complete all the assignments witnout modifying the <code>main.m</code> file.</p>
 <h2 id="custom-functions"><a class="header" href="#custom-functions">Custom Functions</a></h2>
-<p>You are welcome to add as many custom functions in the <em>algorithms</em> folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the <em>kalman_filter</em> folder). You may also arbitrarily modify the content (<strong>not header</strong>) of the <em>student workspace</em> function (steps 7 to 12 of the simulation loop) and other functions called by it.</p>
+<p>You are welcome to add as many custom functions in the <em>algorithms</em> folder as you like; however, try to follow the proposed folder structure (e.g., put the Kalman filter-related functions in the <em>kalman_filter</em> folder). You may also arbitrarily modify the content (<strong>not header</strong>) of the <em>student workspace</em> function (steps 8 to 13 of the simulation loop) and other functions called by it.</p>
 <h2 id="maps-and-testing"><a class="header" href="#maps-and-testing">Maps and testing</a></h2>
 <p>The <code>maps</code> directory contains several maps in the text file format, which are parsed in real-time when the simulation is started. Use reverse engineering to understand the syntax, and create own maps to test your algorithms thoroughly. In general, the syntax includes the definition of the goal position, map dimensions, wall positions, and GNSS-denied polygons. Do not forget to test various start poses as well (including start angle!); this is adjustable via <code>start_position</code> variable (<code>setup.m</code>). For the project evaluation, a comprehensive map comprising both indoor and outdoor areas and GNSS-denied zones will be employed.</p>
 <h2 id="gui"><a class="header" href="#gui">GUI</a></h2>
