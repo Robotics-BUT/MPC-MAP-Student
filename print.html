@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="resources/index.html">Overview</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_1_uncertainty/text.html">Week 2 - Uncertainty</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_2_motion_control/text.html">Week 3 - Motion Control</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_3_particle_filter/text.html">Week 4 - Particle Filter</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_4_kalman_filter/text.html">Week 5 - Kalman Filter and EKF</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_5_path_planning/text.html">Week 6 - Path Planning</a></li><li class="chapter-item expanded affix "><a href="resources/simulator/text.html">Simulator</a></li><li class="chapter-item expanded affix "><a href="resources/semester_project/text.html">Semester Project</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="resources/index.html">Overview</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_1_uncertainty/text.html">Week 2 - Uncertainty</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_2_motion_control/text.html">Week 3 - Motion Control</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_3_particle_filter/text.html">Week 4 - Particle Filter</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_4_kalman_filter/text.html">Week 5 - Kalman Filter and EKF</a></li><li class="chapter-item expanded affix "><a href="resources/assignment_5_path_planning/text.html">Week 6 - Path Planning</a></li><li class="chapter-item expanded affix "><a href="resources/semester_project/text.html">Semester Project</a></li><li class="chapter-item expanded affix "><a href="resources/simulator/text.html">Simulator</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -175,12 +175,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="readme"><a class="header" href="#readme">Readme</a></h1>
-<p>These are the online resources for the MPC-MAP course.</p>
-<p>See the semester project and assignment pages for detail information.</p>
+<p>This documentation contains weekly assignments for the MPC-MAP course as well as the semester project assignment and a brief description of the simulating tool.</p>
+<p>Please note that the documentation is continuously updated, the final version of the assignment will be available at the beginning of the given week. The same applies for the semester project – the assignment will be introduced by a lecturer during the semester.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
 <p>The goal of this assignment is to get familiar with the simulator, and explore uncertainties in the sensors and motion.</p>
 <h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
-<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section). Focuse your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
+<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section). Focus your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
 <h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
 <p>The robot is equipped with 8-way LiDAR and GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing static robot (zero velocities) into suitable maps, and reading the data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across the individual LiDAR channels, and across both GNSS axes. Plot histograms of the measurements.</p>
 <h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
@@ -262,6 +262,29 @@ MATLAB script (<code>main.m</code>) must be executable without any errors and ha
 <p>Send the report and all related MATLAB scripts to <a href="mailto:resources/assignment_5_path_planning/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a>.
 MATLAB script must be executable without any errors and has to generate all graphical outputs that are in the report.
 Deadline: 19 March 2023, 23:59.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
+<h2 id="cíle-projektu"><a class="header" href="#cíle-projektu">Cíle projektu</a></h2>
+<p>Cílem semestrálního projektu je vytvořit algoritmus pro předložený simulátor v Matlabu, pomocí kterého dojede robot do cíle v co nejmenším počtu iterací.
+Algoritmus musí fungovat pro různé mapy, počáteční pozice startu a natočení robotu a pozice cíle; robot nesmí narážet do překážek a přejíždět hranice mapy.
+Nezbytným minimem pro splnění projektu je úspěšné zvládnutí  všech předložených vzorových map ve složce <code>resources</code>. Metody vhodné pro splnění zadání budou
+probrány na přednáškách a cvičeních, ne všechny musí být použity. Pro splnění zadání je možné pouze vyčítat data ze struktur <code>read_only_vars</code> (mapa, data
+ze senzorů, parametry podvozku, aj.) a <code>public_vars</code>, nastavovat rychlosti robotu v proměnné <code>agent_motion_vector</code> a zapisovat do struktury <code>public_vars</code>
+(pro účely vizualizace). Není možné modifikovat základní strukturu hlavní smyčky simulátoru.</p>
+<h2 id="simulátor"><a class="header" href="#simulátor">Simulátor</a></h2>
+<p>Simulátor je dostupný v repozitáři: <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a> Simulátor nesmí být modifikován, hodnotit se bude na předloženém simulátoru.</p>
+<p>Vaše řešení musí být spustitelné bez Matlab toolboxů.</p>
+<p>V případě nalezení chyby v simulátoru ze strany vyučujících i studentů bude vydána nová verze s opravou, o které budou studenti informování.</p>
+<h2 id="způsob-hodnocení"><a class="header" href="#způsob-hodnocení">Způsob hodnocení</a></h2>
+<p>Vytvořený algoritmus bude vyučujícími otestován na různých mapách s různými souřadnicemi (včetně orientace) startu a cíle. Úspěšnost dojetí do cíle a potřebný počet iterací bude vyhodnocen statisticky opakovaným spouštěním algoritmu.</p>
+<h2 id="odevzdání"><a class="header" href="#odevzdání">Odevzdání</a></h2>
+<p>Projekt odevzdejte ve formě komprimovaného souboru obsahující celý spustitelný projekt v Matlab elektronicky na email <a href="mailto:resources/semester_project/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a> do konce 8. týdne semestru (2. 4. 2023, 23:59).</p>
+<h2 id="bodové-hodnocení"><a class="header" href="#bodové-hodnocení">Bodové hodnocení</a></h2>
+<ul>
+<li>Úspěšnost dojetí do cíle: 15 b</li>
+<li>Potřebný počet iterací: 15 b</li>
+<li>Technické řešení: 20 b</li>
+<li>Penalizace až -20 b, pokud projekt nelze spustit bez chyb</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
 <p>The simulator is lightweight, MATLAB-based tool for testing key algorithms utilized for autonomous navigation in mobile robotics. Basically, it integrates differential drive mobile robot model equipped with two different sensors (lidar and GNSS), and  enables to deploy it within custom 2D maps. The main goal is to navigate the robot from start to goal position; for this reason, several algorithms must be implemented:</p>
 <ul>
@@ -304,29 +327,6 @@ Deadline: 19 March 2023, 23:59.</p>
 <p>The <code>maps</code> directory contains several maps in the text file format, which are parsed in real-time when the simulation is started. Use reverse engineering to understand the syntax, and create own maps to test your algorithms thoroughly. In general, the syntax includes the definition of the goal position, map dimensions, wall positions, and GNSS-denied polygons. Do not forget to test various start poses as well (including start angle!); this is adjustable via <code>start_position</code> variable (<code>setup.m</code>). For the project evaluation, a comprehensive map comprising both indoor and outdoor areas and GNSS-denied zones will be employed.</p>
 <h2 id="gui"><a class="header" href="#gui">GUI</a></h2>
 <img src="resources/simulator/imgs/mpc-map-legend.png" alt="sensor model" width="100%"/>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
-<h2 id="cíle-projektu"><a class="header" href="#cíle-projektu">Cíle projektu</a></h2>
-<p>Cílem semestrálního projektu je vytvořit algoritmus pro předložený simulátor v Matlabu, pomocí kterého dojede robot do cíle v co nejmenším počtu iterací.
-Algoritmus musí fungovat pro různé mapy, počáteční pozice startu a natočení robotu a pozice cíle; robot nesmí narážet do překážek a přejíždět hranice mapy.
-Nezbytným minimem pro splnění projektu je úspěšné zvládnutí  všech předložených vzorových map ve složce <code>resources</code>. Metody vhodné pro splnění zadání budou
-probrány na přednáškách a cvičeních, ne všechny musí být použity. Pro splnění zadání je možné pouze vyčítat data ze struktur <code>read_only_vars</code> (mapa, data
-ze senzorů, parametry podvozku, aj.) a <code>public_vars</code>, nastavovat rychlosti robotu v proměnné <code>agent_motion_vector</code> a zapisovat do struktury <code>public_vars</code>
-(pro účely vizualizace). Není možné modifikovat základní strukturu hlavní smyčky simulátoru.</p>
-<h2 id="simulátor"><a class="header" href="#simulátor">Simulátor</a></h2>
-<p>Simulátor je dostupný v repozitáři: <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a> Simulátor nesmí být modifikován, hodnotit se bude na předloženém simulátoru.</p>
-<p>Vaše řešení musí být spustitelné bez Matlab toolboxů.</p>
-<p>V případě nalezení chyby v simulátoru ze strany vyučujících i studentů bude vydána nová verze s opravou, o které budou studenti informování.</p>
-<h2 id="způsob-hodnocení"><a class="header" href="#způsob-hodnocení">Způsob hodnocení</a></h2>
-<p>Vytvořený algoritmus bude vyučujícími otestován na různých mapách s různými souřadnicemi (včetně orientace) startu a cíle. Úspěšnost dojetí do cíle a potřebný počet iterací bude vyhodnocen statisticky opakovaným spouštěním algoritmu.</p>
-<h2 id="odevzdání"><a class="header" href="#odevzdání">Odevzdání</a></h2>
-<p>Projekt odevzdejte ve formě komprimovaného souboru obsahující celý spustitelný projekt v Matlab elektronicky na email <a href="mailto:resources/semester_project/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a> do konce 8. týdne semestru (2. 4. 2023, 23:59).</p>
-<h2 id="bodové-hodnocení"><a class="header" href="#bodové-hodnocení">Bodové hodnocení</a></h2>
-<ul>
-<li>Úspěšnost dojetí do cíle: 15 b</li>
-<li>Potřebný počet iterací: 15 b</li>
-<li>Technické řešení: 20 b</li>
-<li>Penalizace až -20 b, pokud projekt nelze spustit bez chyb</li>
-</ul>
 
                     </main>
 
