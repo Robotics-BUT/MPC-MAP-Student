@@ -4,11 +4,11 @@ This week, implement a simple path-following algorithm using motion capture-base
 
 Make sure that your simulator version is up-to-date as the older versions do not provide MoCap.
 
-## Task 1 – Creating maps
+## Task 1 â€“ Creating maps
 
 Look into examples located in the `maps` folder and try to identify meaning of individual parameters by means of the reverse engineering. Then, create an arbitrary custom map containing at least one wall. The map is going to be used to test your motion control algorithm so make it rather spacious. You need to define a GNSS-denied region to simulate indoor environment where the motion capture works. 
 
-## Task 2 – Sample paths
+## Task 2 â€“ Sample paths
 
 Define at least three test paths of different kind, for example:
 - straight line,
@@ -17,7 +17,7 @@ Define at least three test paths of different kind, for example:
 
 A path is defined as a sequence of (x, y) waypoints. Note that waypoints stored in the `public_vars.path` variable are visualized by the simulator. Utilization of this variable is recommended. 
 
-## Task 3 – Motion control
+## Task 3 â€“ Motion control
 
 Choose any path-following algorithm and implement it to make the robot follow the paths defined in the previous task. Use the variable `read_only_vars.mocap_pose` to get nearly true pose of the robot. Discuss how parameters of the chosen method affect the quality of the motion control.
 
