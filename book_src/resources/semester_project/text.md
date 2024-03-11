@@ -30,4 +30,6 @@ Send the `zip` archive comprising the `algorithm` directory to e-mail address <t
 -	Success rate of reaching the goal: up to 15 points
 -	The required number of iterations: up to 15 points
 -	Technical quality: up to 20 points
+
+To successfully pass the course, a minimum of 20 points must be obtained from the semester project.
                                                                                                       
