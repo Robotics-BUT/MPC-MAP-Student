@@ -153,21 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
-<p>The goal of this assignment is to get familiar with the simulator, and explore uncertainties in the sensors and motion.</p>
-<h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
-<p>Download the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and get familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section). Focus your attention on the <code>private_vars</code>, <code>read_only_vars</code> and <code>public_vars</code> data structures, and the sequence of operations in the infinite simulation loop. Try loading different maps and setting various motion commands. No output is required in this step.</p>
-<h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
-<p>The robot is equipped with 8-way LiDAR and GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing static robot (zero velocities) into suitable maps, and reading the data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across the individual LiDAR channels, and across both GNSS axes. Plot histograms of the measurements.</p>
-<h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
-<p>Use the measurements from the previous step, and MATLAB internal <code>cov</code> function to assemble covariance matrix for both sensors. Verify the resultant matrix is of size 8x8 and 2x2 for the LiDAR and GNSS, respectively. Verify the values on the main diagonal equal to <code>sigma^2</code>, i.e. equal to <code>variance=std^2</code>.</p>
-<h2 id="task-4--normal-distribution"><a class="header" href="#task-4--normal-distribution">Task 4 – Normal distribution</a></h2>
-<p>Create a function <code>norm_pdf</code> for assembling probability density function (<em>pdf</em>) of the normal distribution. The function accepts three arguments: <code>x</code> (values at which to evaluate the <em>pdf</em>), <code>mu</code> (mean), and <code>sigma</code> (standard deviation). Utilize this function and <code>sigma</code> values from the Task 2 (e.g. for the <em>1st</em> LiDAR and <em>X</em> GNSS axis) to generate two <em>pdf</em>s illustrating the noise characteristics of the robots sensors, and plot it into one image (use <code>mu=0</code> in both cases).</p>
-<h2 id="task-5--motion-uncertainty"><a class="header" href="#task-5--motion-uncertainty">Task 5 – Motion uncertainty</a></h2>
-<p>The uncertainty is not just in the measurement (in the sensor data), but in the motion as well. Load the <code>indoor_1</code> map and try to navigate the robot to the goal location without using sensors. To do so, apply a proper sequence of motion commands inside the <code>plan_motion.m</code> function. Save the screenshot of the successful run and discuss, what could be the potential source of uncertainty in the robot motion.</p>
-<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>To implement the tasks, use the <code>algorithm</code> directory only; do not modify the rest of the simulator. The solution must work in the fresh simulator without any errors, and must generate the graphical outputs contained in the report.</p>
-<p>Create a single A4 report that will briefly describe your solution (few sentences for each task and an image, if makes sense).</p>
-<p>Send the report and <code>zip</code> archive comprising the <code>algorithm</code> directory to the lecturer's e-mail by Sunday 23:59 of the given week of the semester.</p>
+<p>To be added.</p>
 
                     </main>
 
