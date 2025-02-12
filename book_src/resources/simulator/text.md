@@ -6,6 +6,8 @@ The simulator is lightweight, MATLAB-based tool for testing key algorithms utili
 - **Path planning**: an algorithm to find optimal, obstacle-free path from the start to goal location (e.g. A* and Dijkstra's algorithms).
 - **Motion control**: a control strategy to follow the computed path by using the actual estimated pose. This results in the control commands for the individual wheels.
 
+The simulator has been tested in **MATLAB R2023b**; it may not work correctly in other versions.
+
 ## Variables
 
 The simulator uses numerous variables to provide its function; however, not all of them can be used/red to solve the task (the robot's true position, for example). The variables are divided into three groups (structures):
