@@ -7,6 +7,9 @@ disp('Welcome to MPC-MAP Project, GLHF!')
 % Setup Environment
 environment_setup;
 
+% Checks if any toolboxes are installed
+check_toolboxes;
+
 % Call setup procedure
 setup;
 
