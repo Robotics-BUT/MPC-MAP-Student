@@ -37,7 +37,7 @@ The simulator workspace comprise *main* script stored in `main.m`, which contain
 15. **GUI rendering**: render the simulator state in a Figure window.
 16. **Increment counter**: modifies read-only variable `counter` to record the number of finished iterations. 
 
-Steps 8 to 13 are located in a separate `student_workspace.m` function.
+Steps 8 to 13 are located in a separate `algorithms/student_workspace.m` function.
 
 **Warning!** Step 7 is going to be skipped during the final project evaluation. Your solution **must not** rely on MoCap data!
 
