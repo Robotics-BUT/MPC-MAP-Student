@@ -157,7 +157,30 @@
 <p>This documentation contains weekly assignments for the MPC-MAP course, as well as the semester project assignment and a brief description of the simulation tool.</p>
 <p>Please note that this documentation is continuously updated. The final version of each assignment will be available at the given week. The same applies to the semester project—the assignment will be introduced by a lecturer during the semester.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
-<p>To be added.</p>
+<p>The goal of this assignment is to become familiar with the simulator and explore uncertainties in the sensors and motion.</p>
+<h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
+<p>Download the repository containig the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and become familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section).</p>
+<ul>
+<li>Explore the <code>private_vars</code>, <code>read_only_vars</code>, and <code>public_vars</code> data structures.</li>
+<li>Become familiar with the sequence of the operations in the infinite simulation loop in <code>main.m</code> and <code>algorithms/student_workspace.m</code>.</li>
+<li>Load different maps via <code>algorithms/setup.m</code> and set different start positions.</li>
+<li>Try various motion commands in <code>algorithms/motion_control/plan_motion.m</code> and observe the robot's behaviour.</li>
+</ul>
+<p>No output is required in this step.</p>
+<h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
+<p>The robot is equipped with an 8-way LiDAR and a GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing the robot in a static position (zero velocities) in suitable maps and collecting data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across individual LiDAR channels and both GNSS axes. Plot histograms of the measurements.</p>
+<h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
+<p>Use the measurements from the previous step and MATLAB's internal <code>cov</code> function to assemble the covariance matrix for both sensors. Verify that the resultant matrix is of size 8×8 for the LiDAR and 2×2 for the GNSS. Ensure that the values on the main diagonal are equal to <code>sigma^2, i.e., </code>variance=std^2`.</p>
+<h2 id="task-4--normal-distribution"><a class="header" href="#task-4--normal-distribution">Task 4 – Normal distribution</a></h2>
+<p>Create a function <code>norm_pdf</code> for assembling probability density function (<em>pdf</em>) of the normal distribution. The function accepts three arguments: <code>x</code> (values at which to evaluate the <em>pdf</em>), <code>mu</code> (mean), and <code>sigma</code> (standard deviation). Utilize this function and <code>sigma</code> values from the Task 2 (e.g. for the <em>1st</em> LiDAR and <em>X</em> GNSS axis) to generate two <em>pdf</em>s illustrating the noise characteristics of the robots sensors, and plot it into one image (use <code>mu=0</code> in both cases).</p>
+<p>Create a function <code>norm_pdf</code> to assemble the probability density function (<em>pdf</em>) of the normal distribution. The function should accept three arguments: <code>x</code> (values at which to evaluate the <em>pdf</em>), <code>mu</code> (mean), and <code>sigma</code> (standard deviation). Utilize this function along with the <code>sigma</code> values from Task 2 (e.g., for the <em>1st</em> LiDAR channel and the <em>X</em> GNSS axis) to generate two <em>pdf</em> illustrating the noise characteristics of the robot's sensors, and plot them in a single image (use <code>mu=0</code> in both cases).</p>
+<h2 id="task-5--motion-uncertainty"><a class="header" href="#task-5--motion-uncertainty">Task 5 – Motion uncertainty</a></h2>
+<p>Uncertainty exists not only in the measurements (sensor data) but also in the motion. Load the <code>indoor_1</code> map and attempt to navigate the robot to the goal location without using sensors. To achieve this, apply an appropriate sequence of motion commands inside the <code>plan_motion.m</code> function. Save a screenshot of a successful run and discuss the potential sources of uncertainty in the robot's motion.</p>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
+<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
+<p>Send the report and a <code>zip</code> archive containing the <code>algorithms</code> directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
+<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_2</code> tag to ensure easy identification.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion control</a></h1>
 <p>To be added.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
