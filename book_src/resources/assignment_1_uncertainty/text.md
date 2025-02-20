@@ -22,7 +22,7 @@ Use the measurements from the previous step and MATLAB's internal `cov` function
 
 ## Task 4 – Normal distribution
 
-Create a function `norm_pdf` for assembling probability density function (*pdf*) of the normal distribution. The function accepts three arguments: `x` (values at which to evaluate the *pdf*), `mu` (mean), and `sigma` (standard deviation). Utilize this function and `sigma` values from the Task 2 (e.g. for the *1st* LiDAR and *X* GNSS axis) to generate two *pdf*s illustrating the noise characteristics of the robots sensors, and plot it into one image (use `mu=0` in both cases).
+
 
 Create a function `norm_pdf` to assemble the probability density function (*pdf*) of the normal distribution. The function should accept three arguments: `x` (values at which to evaluate the *pdf*), `mu` (mean), and `sigma` (standard deviation). Utilize this function along with the `sigma` values from Task 2 (e.g., for the *1st* LiDAR channel and the *X* GNSS axis) to generate two *pdf* illustrating the noise characteristics of the robot's sensors, and plot them in a single image (use `mu=0` in both cases).
 
