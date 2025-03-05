@@ -198,7 +198,27 @@
 <p>Send the report and a <code>zip</code> archive containing the algorithms directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
 <p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_3</code> tag to ensure easy identification.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
-<p>To be added.</p>
+<p>The goal of this assignment is to implement a working localization algorithm based on the particle filter. Your submitted solution should be able to demonstrate particle convergence around the robot.</p>
+<h2 id="task-1--prediction"><a class="header" href="#task-1--prediction">Task 1 – Prediction</a></h2>
+<p>Implement the prediction function <code>predict_pose</code> that takes the particle pose and the control input as arguments and returns the new pose. Apply a probabilistic motion model to enhance particles variance.</p>
+<h2 id="task-2--correction"><a class="header" href="#task-2--correction">Task 2 – Correction</a></h2>
+<p>Implement the measurement function <code>compute_lidar_measurement</code> that takes the map, the particle pose, and the lidar orientations as arguments and returns a vector of measured distances <strong>without</strong> any noise.</p>
+<p>You may take advantage of the simulator function <code>ray_cast</code> which is used as follows:</p>
+<p><code>intersections = ray_cast(ray_origin, walls, direction)</code></p>
+<p>The first argument is a position of the ray's initial point, the second argument is the description of walls stored in <code>read_only_vars.map.walls</code>, and the final argument is a direction of the ray in radians. The function returns all intersection of the given ray with the walls.</p>
+<p><strong>Tip:</strong> You can use the MoCap pose and lidar measurements to verify that your function returns correct data.</p>
+<p>Then, implement the weighting function <code>weight_particles</code>. You may use arbitrary metric meeting the requirements.</p>
+<h2 id="task-3--resampling"><a class="header" href="#task-3--resampling">Task 3 – Resampling</a></h2>
+<p>Implement the resampling function <code>resample_particles</code>, taking a set of particles and their associated weights as arguments and returning a new set of resampled particles. Use any algorithm of your choice.</p>
+<h2 id="task-4--localization"><a class="header" href="#task-4--localization">Task 4 – Localization</a></h2>
+<p>Initialize a set of particles at random poses within any indoor map. Update the particle filter in each iteration (perform prediction, correction and resampling). Adjust the previously implemented functions to make the particles converge to the robot's true pose. You should be able to present a screenshot with a cluster of particles gathered around the agent. You may need to move the robot in some cases to make the localization work.</p>
+<p><strong>Tip:</strong> Begin in a map with distinctive features, i.e. not containing similar corridors etc. You can create your own map to help you with the task.</p>
+<p>Discuss the most important parameters of your solution and justify the selection of algorithms. What was the major issue you have had to overcome?</p>
+<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
+<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
+<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
+<p>Send the report and a <code>zip</code> archive containing the algorithms directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
+<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_4</code> tag to ensure easy identification.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-5---kalman-filter-and-ekf"><a class="header" href="#week-5---kalman-filter-and-ekf">Week 5 - Kalman Filter and EKF</a></h1>
 <p>To be added.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="week-6---path-planning"><a class="header" href="#week-6---path-planning">Week 6 - Path Planning</a></h1>
