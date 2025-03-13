@@ -34,5 +34,5 @@ Create a single A4 report to the provided template that briefly describes your s
 
 Send the report and a `zip` archive containing the `algorithms` directory to the lecturer's e-mail by **Wednesday at 23:59 next week**.
 
-For those using Git for version control, you can send a link to your public GitHub repository instead of the `zip` file. The repository must contain the simulator with the `algorithms` directory with your solution. Please tag the final version with `week_2` tag to ensure easy identification.
+For those using Git for version control, you can send a link to your public GitHub repository instead of the `zip` file. The repository must contain the simulator with the `algorithms` directory with your solution. Please tag the final version with `week_5` tag to ensure easy identification.
 
