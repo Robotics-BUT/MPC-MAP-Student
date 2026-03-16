@@ -13,40 +13,52 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-c3fdd5ca.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-50622efd.js"></script>
     </head>
     <body>
-    <div id="body-container">
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -60,7 +72,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -69,55 +82,59 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -125,163 +142,71 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="readme"><a class="header" href="#readme">Readme</a></h1>
 <p>This documentation contains weekly assignments for the MPC-MAP course, as well as the semester project assignment and a brief description of the simulation tool.</p>
 <p>Please note that this documentation is continuously updated. The final version of each assignment will be available at the given week. The same applies to the semester project—the assignment will be introduced by a lecturer during the semester.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
-<p>The goal of this assignment is to become familiar with the simulator and explore uncertainties in the sensors and motion.</p>
-<h2 id="task-1--the-simulator"><a class="header" href="#task-1--the-simulator">Task 1 – The simulator</a></h2>
-<p>Download the repository containig the simulator from GitHub <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>, and become familiar with it (see the <a href="https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html">Simulator</a> section).</p>
-<ul>
-<li>Explore the <code>private_vars</code>, <code>read_only_vars</code>, and <code>public_vars</code> data structures.</li>
-<li>Become familiar with the sequence of the operations in the infinite simulation loop in <code>main.m</code> and <code>algorithms/student_workspace.m</code>.</li>
-<li>Load different maps via <code>algorithms/setup.m</code> and set different start positions.</li>
-<li>Try various motion commands in <code>algorithms/motion_control/plan_motion.m</code> and observe the robot's behaviour.</li>
-</ul>
-<p>No output is required in this step.</p>
-<h2 id="task-2--sensor-uncertainty"><a class="header" href="#task-2--sensor-uncertainty">Task 2 – Sensor uncertainty</a></h2>
-<p>The robot is equipped with an 8-way LiDAR and a GNSS receiver. Determine the standard deviation (<em>std</em>) <code>sigma</code> for the data from both sensors by placing the robot in a static position (zero velocities) in suitable maps and collecting data for at least 100 simulation periods. Discuss whether the <em>std</em> is consistent across individual LiDAR channels and both GNSS axes. Plot histograms of the measurements.</p>
-<h2 id="task-3--covariance-matrix"><a class="header" href="#task-3--covariance-matrix">Task 3 – Covariance matrix</a></h2>
-<p>Use the measurements from the previous step and MATLAB's internal <code>cov</code> function to assemble the covariance matrix for both sensors. Verify that the resultant matrix is of size 8×8 for the LiDAR and 2×2 for the GNSS. Ensure that the values on the main diagonal are equal to <code>sigma^2, i.e., </code>variance=std^2`.</p>
-<h2 id="task-4--normal-distribution"><a class="header" href="#task-4--normal-distribution">Task 4 – Normal distribution</a></h2>
-<p>Create a function <code>norm_pdf</code> to assemble the probability density function (<em>pdf</em>) of the normal distribution. The function should accept three arguments: <code>x</code> (values at which to evaluate the <em>pdf</em>), <code>mu</code> (mean), and <code>sigma</code> (standard deviation). Utilize this function along with the <code>sigma</code> values from Task 2 (e.g., for the <em>1st</em> LiDAR channel and the <em>X</em> GNSS axis) to generate two <em>pdf</em> illustrating the noise characteristics of the robot's sensors, and plot them in a single image (use <code>mu=0</code> in both cases).</p>
-<h2 id="task-5--motion-uncertainty"><a class="header" href="#task-5--motion-uncertainty">Task 5 – Motion uncertainty</a></h2>
-<p>Uncertainty exists not only in the measurements (sensor data) but also in the motion. Load the <code>indoor_1</code> map and attempt to navigate the robot to the goal location without using sensors. To achieve this, apply an appropriate sequence of motion commands inside the <code>plan_motion.m</code> function. Save a screenshot of a successful run and discuss the potential sources of uncertainty in the robot's motion.</p>
-<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
-<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
-<p>Send the report and a <code>zip</code> archive containing the <code>algorithms</code> directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_2</code> tag to ensure easy identification.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion control</a></h1>
-<p>This week, implement a simple path-following algorithm using motion capture-based localization data. Your submitted solution should be able to lead the robot to the goal along a defined path.</p>
-<h2 id="task-1--creating-maps"><a class="header" href="#task-1--creating-maps">Task 1 – Creating maps</a></h2>
-<p>Look into examples located in the <code>maps</code> folder and try to identify meaning of individual parameters by the means of reverse engineering. If you with to create a custom map to test your algorithms, you need to define a GNSS-denied region to simulate indoor environment where the motion capture works.</p>
-<p>No output is required in this step.</p>
-<h2 id="task-2--create-a-path"><a class="header" href="#task-2--create-a-path">Task 2 – Create a path</a></h2>
-<p>Define a path in <code>indoor_1</code> map, leading from point <code>(2, 8.5)</code> to the goal position. The path must not consist of straight lines only, incorporate also curves (e. g., a circular arc or a sine wave). Maintain safe distance between path segments and the walls.</p>
-<p>A path is defined as a sequence of (x, y) waypoints. Note that waypoints stored in the <code>public_vars.path</code> variable are visualized by the simulator. Utilization of this variable is recommended.</p>
-<h2 id="task-3--motion-control"><a class="header" href="#task-3--motion-control">Task 3 – Motion control</a></h2>
-<p>Set your robot‘s starting position to match the beginning of the defined path – <code>(2, 8.5)</code>. Choose any path-following algorithm and implement it to make the robot follow the path defined in the previous task. Use the variable <code>read_only_vars.mocap_pose</code> to get nearly true pose of the robot. Discuss how parameters of the chosen method affect the quality of the motion control.</p>
-<p>Put your solution into the <code>plan_motion</code> function. By default, the code structure is prepared for target point-based algorithms; you are, however, free to alter the function and use, e.g., the cross track error instead. The choice depends on your preferences, you can even implement multiple algorithms and compare them.</p>
-<p>Mind the fact that the MoCap data will not be available for the final project!</p>
-<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
-<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
-<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
-<p>Send the report and a <code>zip</code> archive containing the algorithms directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_3</code> tag to ensure easy identification.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
-<p>The goal of this assignment is to implement a working localization algorithm based on the particle filter. Your submitted solution should be able to demonstrate particle convergence around the robot.</p>
-<h2 id="task-1--prediction"><a class="header" href="#task-1--prediction">Task 1 – Prediction</a></h2>
-<p>Implement the prediction function <code>predict_pose</code> that takes the particle pose and the control input as arguments and returns the new pose. Apply a probabilistic motion model to enhance particles variance.</p>
-<h2 id="task-2--correction"><a class="header" href="#task-2--correction">Task 2 – Correction</a></h2>
-<p>Implement the measurement function <code>compute_lidar_measurement</code> that takes the map, the particle pose, and the lidar orientations as arguments and returns a vector of measured distances <strong>without</strong> any noise.</p>
-<p>You may take advantage of the simulator function <code>ray_cast</code> which is used as follows:</p>
-<p><code>intersections = ray_cast(ray_origin, walls, direction)</code></p>
-<p>The first argument is a position of the ray's initial point, the second argument is the description of walls stored in <code>read_only_vars.map.walls</code>, and the final argument is a direction of the ray in radians. The function returns all intersection of the given ray with the walls.</p>
-<p><strong>Tip:</strong> You can use the MoCap pose and lidar measurements to verify that your function returns correct data.</p>
-<p>Then, implement the weighting function <code>weight_particles</code>. You may use arbitrary metric meeting the requirements.</p>
-<h2 id="task-3--resampling"><a class="header" href="#task-3--resampling">Task 3 – Resampling</a></h2>
-<p>Implement the resampling function <code>resample_particles</code>, taking a set of particles and their associated weights as arguments and returning a new set of resampled particles. Use any algorithm of your choice.</p>
-<h2 id="task-4--localization"><a class="header" href="#task-4--localization">Task 4 – Localization</a></h2>
-<p>Initialize a set of particles at random poses within any indoor map. Update the particle filter in each iteration (perform prediction, correction and resampling). Adjust the previously implemented functions to make the particles converge to the robot's true pose. You should be able to present a screenshot with a cluster of particles gathered around the agent. You may need to move the robot in some cases to make the localization work.</p>
-<p><strong>Tip:</strong> Begin in a map with distinctive features, i.e. not containing similar corridors etc. You can create your own map to help you with the task.</p>
-<p>Discuss the most important parameters of your solution and justify the selection of algorithms. What was the major issue you have had to overcome?</p>
-<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
-<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
-<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
-<p>Send the report and a <code>zip</code> archive containing the algorithms directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_4</code> tag to ensure easy identification.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-5---kalman-filter-and-ekf"><a class="header" href="#week-5---kalman-filter-and-ekf">Week 5 - Kalman Filter and EKF</a></h1>
-<p>The goal of this assignment is to implement a localization algorithm based on the Extended Kalman Filter and GNSS data.</p>
-<h2 id="task-1--preparation"><a class="header" href="#task-1--preparation">Task 1 – Preparation</a></h2>
-<p>Load the <code>outdoor_1</code> map and manually design a trajectory between the start pose <code>[2,2,π/2]</code> and the goal location <code>[16,2]</code>.</p>
-<p>Examine the uncertainty of the GNSS measurement; i.e. implement an initialization procedure which will determine the initial position (<em>mean</em>) and the covariance matrix of the GNSS sensor data. You will need the data within later tasks.</p>
-<h2 id="task-2--ekf-implementation"><a class="header" href="#task-2--ekf-implementation">Task 2 – EKF implementation</a></h2>
-<p>As you use a differential wheeled robot, there is a nonlinearity in the state and control transition (nonlinear function <em>g(x)</em>); thus, you must employ the EKF for the prediction step. Implement <code>ekf_predict</code> function for given drive type.</p>
-<p>On the other hand, the KF is appropriate for the correction phase, since there is a linear relation between the state and measurement. Implement <code>kf_correct</code> function.</p>
-<h2 id="task-3--filter-tuning-with-a-known-initial-pose"><a class="header" href="#task-3--filter-tuning-with-a-known-initial-pose">Task 3 – Filter tuning with a known initial pose</a></h2>
-<p>Set the initial pose to <code>x=[2,2,π/2]</code>. Use this pose and Σ with zeros (i.e., high certainty) as the initial belief for the EKF algorithm, and navigate the robot along your trajectory to the goal location. Only the EKF-based estimated pose can be utilized for the control. You already know the GNSS covariance matrix to assemble the <code>Q</code> matrix (measurement noise covariance); for the process noise, apply variances 0.01 (a rough initial estimate) to all variables and tune the <code>R</code> matrix to reach an optimal performance. Capture the result.</p>
-<h2 id="task-4--algorithm-deployment"><a class="header" href="#task-4--algorithm-deployment">Task 4 – Algorithm deployment</a></h2>
-<p>In practice, the true initial pose is not know for the algorithm. Utilize your initialization procedure from the Task 1 to determine the initial belief for the EKF. Notice that you can not measure the robot orientation, therefore a high variance must be specified for this variable within the initial belief.</p>
-<p>Observe, how the estimated pose converges to the real pose values, and eventually tune the filter parameters to reach an optimal performance (a "smooth" estimate). Notice the orientation is successfully estimated even it is not directly measured. Capture a successful ride to the goal location.</p>
-<h2 id="submission-3"><a class="header" href="#submission-3">Submission</a></h2>
-<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
-<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
-<p>Send the report and a <code>zip</code> archive containing the <code>algorithms</code> directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_5</code> tag to ensure easy identification.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="week-6---path-planning"><a class="header" href="#week-6---path-planning">Week 6 - Path Planning</a></h1>
-<p>The goal of this assignment is to implement a working path planning algorithm. Your submitted solution should be able to plan a path between any starting and goal position (if a solution exists).</p>
-<h2 id="task-1"><a class="header" href="#task-1">Task 1</a></h2>
-<p>Choose and implement an algorithm which finds a path between the starting position of the robot and the goal position in the map. The path must not collide with any wall. Use the occupancy grid stored in the variable <code>read_only_vars.discrete_map.map</code>.</p>
-<h2 id="task-2"><a class="header" href="#task-2">Task 2</a></h2>
-<p>Adjust the planning algorithm to keep a clearance from obstacles. You may use any method. The clearance needs to be at least 0.2 m.</p>
-<h2 id="task-3"><a class="header" href="#task-3">Task 3</a></h2>
-<p>Apply a smoothing algorithm to the generated paths. Use the iterative algorithm provided in the lecture or find another viable method. Discuss the effects of the algorithm's parameters.</p>
-<h2 id="submission-4"><a class="header" href="#submission-4">Submission</a></h2>
-<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
-<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
-<p>Send the report and a <code>zip</code> archive containing the algorithms directory to the lecturer's e-mail by <strong>Wednesday at 23:59 next week</strong>.</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>week_6</code> tag to ensure easy identification.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
-<h2 id="project-objectives"><a class="header" href="#project-objectives">Project objectives</a></h2>
-<p>The primary objective of the semester project is to develop a viable solution for the provided MATLAB simulator. Your code should guide the robot to its goal in the fewest possible iterations. The algorithms should be capable of working across various map types, and accommodate arbitrary goal and starting positions, including orientation. It is imperative that the robot avoids collisions with obstacles and remains within the boundaries of the map.</p>
-<p>Successful completion of the project requires the ability to accomplish the task in all sample maps provided in the <code>maps</code> folder. While suitable methods have been covered in lectures and assignments, you are not required to utilize every presented procedure. You are permitted to modify files within the <code>algorithms</code> folder and add your own functions; however, altering the <code>main.m</code> script is strictly prohibited. <strong>Note that step 7 of the simulator’s main loop will be disabled, rendering MoCap data unavailable.</strong></p>
-<h2 id="simulator"><a class="header" href="#simulator">Simulator</a></h2>
-<p>The simulator is accessible in the repository <a href="https://github.com/Robotics-BUT/MPC-MAP-Student">https://github.com/Robotics-BUT/MPC-MAP-Student</a>. Do not modify any functions relied upon by the simulator; your solution will be evaluated using the functions published in the repository.</p>
-<p><strong>Your code must be executable without dependence on any MATLAB toolbox.</strong></p>
-<p>The solution will be assessed using MATLAB R2023b. <strong>The project must yield no errors upon execution.</strong></p>
-<p><em>Tip:</em>
-Clone a 'clean' copy of the simulator from the repository and utilize a toolbox-free installation of MATLAB to ensure that your project encounters no issues.</p>
-<h2 id="assessment"><a class="header" href="#assessment">Assessment</a></h2>
-<p>The project will undergo testing by the lecturers using various maps and randomly selected coordinates for the start and goal positions (including orientation). The success rate of reaching the goal and the required number of iterations will be statistically evaluated through repeated execution of the code.</p>
-<h2 id="submission-5"><a class="header" href="#submission-5">Submission</a></h2>
-<p>Send the <code>zip</code> archive comprising the <code>algorithm</code> directory to e-mail address <a href="mailto:resources/semester_project/tomas.lazna@ceitec.vutbr.cz">tomas.lazna@ceitec.vutbr.cz</a> by Wednesday 23:59 of the 9th week of the semester (9 April 2025).</p>
-<p>For those using Git for version control, you can send a link to your public GitHub repository instead of the <code>zip</code> file. The repository must contain the simulator with the <code>algorithms</code> directory with your solution. Please tag the final version with <code>project</code> tag to ensure easy identification.</p>
-<h2 id="scoring-system"><a class="header" href="#scoring-system">Scoring system</a></h2>
-<ul>
-<li>Success rate of reaching the goal: up to 15 points</li>
-<li>The required number of iterations: up to 15 points</li>
-<li>Technical quality: up to 20 points</li>
-</ul>
-<p>To successfully pass the course, a minimum of 20 points must be obtained from the semester project.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-2---uncertainty"><a class="header" href="#week-2---uncertainty">Week 2 - Uncertainty</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion control</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-5---kalman-filter-and-ekf"><a class="header" href="#week-5---kalman-filter-and-ekf">Week 5 - Kalman Filter and EKF</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-6---path-planning"><a class="header" href="#week-6---path-planning">Week 6 - Path Planning</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="semester-project"><a class="header" href="#semester-project">Semester Project</a></h1>
+<p>To be added.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="matlab-robot-simulator"><a class="header" href="#matlab-robot-simulator">MATLAB Robot Simulator</a></h1>
 <p>The simulator is lightweight, MATLAB-based tool for testing key algorithms utilized for autonomous navigation in mobile robotics. Basically, it integrates differential drive mobile robot model equipped with two different sensors (lidar and GNSS), and  enables to deploy it within custom 2D maps. The main goal is to navigate the robot from start to goal position; for this reason, several algorithms must be implemented:</p>
 <ul>
 <li><strong>Localization</strong>: two algorithms are needed - for outddor and indoor. The pose may be estimated via Extended Kalman Filter and GNSS data in outdoor areas; for indoor, the algorithm utilizing Particle Filter and known map is more suitable since there is a GNSS denied zone indoor.</li>
-<li><strong>Path planning</strong>: an algorithm to find optimal, obstacle-free path from the start to goal location (e.g. A* and Dijkstra's algorithms).</li>
+<li><strong>Path planning</strong>: an algorithm to find optimal, obstacle-free path from the start to goal location (e.g. A* and Dijkstra’s algorithms).</li>
 <li><strong>Motion control</strong>: a control strategy to follow the computed path by using the actual estimated pose. This results in the control commands for the individual wheels.</li>
 </ul>
 <p>The simulator has been tested in <strong>MATLAB R2023b</strong>; it may not work correctly in other versions.</p>
 <h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
-<p>The simulator uses numerous variables to provide its function; however, not all of them can be used/red to solve the task (the robot's true position, for example). The variables are divided into three groups (structures):</p>
+<p>The simulator uses numerous variables to provide its function; however, not all of them can be used/red to solve the task (the robot’s true position, for example). The variables are divided into three groups (structures):</p>
 <ul>
 <li><strong>Private variables</strong> (<code>private_vars</code>): these variables are used in the <em>main</em> script only and <strong>not accessible</strong> in modifiable student functions.</li>
 <li><strong>Read only variables</strong> (<code>read_only_vars</code>): these are accessible for your code, but <strong>not returned</strong> to the <em>main</em> script.</li>
@@ -316,7 +241,7 @@ Clone a 'clean' copy of the simulator from the repository and utilize a toolbox-
 <h2 id="maps-and-testing"><a class="header" href="#maps-and-testing">Maps and testing</a></h2>
 <p>The <code>maps</code> directory contains several maps in the text file format, which are parsed in real-time when the simulation is started. Use reverse engineering to understand the syntax, and create own maps to test your algorithms thoroughly. In general, the syntax includes the definition of the goal position, map dimensions, wall positions, and GNSS-denied polygons. Do not forget to test various start poses as well (including start angle!); this is adjustable via <code>start_position</code> variable (<code>setup.m</code>). For the project evaluation, a comprehensive map comprising both indoor and outdoor areas and GNSS-denied zones will be employed.</p>
 <h2 id="gui"><a class="header" href="#gui">GUI</a></h2>
-<img src="resources/simulator/imgs/mpc-map-legend.png" alt="sensor model" width="100%"/>
+<img src="resources/simulator/imgs/mpc-map-legend.png" alt="sensor model" width="100%" />
 
                     </main>
 
@@ -335,6 +260,11 @@ Clone a 'clean' copy of the simulator from the repository and utilize a toolbox-
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -343,13 +273,13 @@ Clone a 'clean' copy of the simulator from the repository and utilize a toolbox-
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
@@ -358,6 +288,7 @@ Clone a 'clean' copy of the simulator from the repository and utilize a toolbox-
             window.setTimeout(window.print, 100);
         });
         </script>
+
 
     </div>
     </body>
