@@ -4,7 +4,7 @@ The goal of this assignment is to become familiar with the simulator and explore
 
 ## Task 1 – The simulator
 
-Download the repository containig the simulator from GitHub [https://github.com/Robotics-BUT/MPC-MAP-Student](https://github.com/Robotics-BUT/MPC-MAP-Student), and become familiar with it (see the [Simulator](https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html) section). 
+Download the repository containig the simulator from GitHub [https://github.com/Robotics-BUT/MPC-MAP-Student](https://github.com/Robotics-BUT/MPC-MAP-Student), and become familiar with it (see the [Simulator](https://robotics-but.github.io/MPC-MAP-Student/resources/simulator/text.html) section).
 - Explore the `private_vars`, `read_only_vars`, and `public_vars` data structures.
 - Become familiar with the sequence of the operations in the infinite simulation loop in `main.m` and `algorithms/student_workspace.m`.
 - Load different maps via `algorithms/setup.m` and set different start positions.
@@ -36,6 +36,4 @@ To implement the tasks, use only the `algorithms` directory; do not modify the r
 
 Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.
 
-Send the report and a `zip` archive containing the `algorithms` directory to the lecturer's e-mail by **Wednesday at 23:59 next week**.
-
-For those using Git for version control, you can send a link to your public GitHub repository instead of the `zip` file. The repository must contain the simulator with the `algorithms` directory with your solution. Please tag the final version with `week_2` tag to ensure easy identification.
+Send the link to your GitHub repository to the lecturer’s email by **Monday at 23:59 next week**. The repository must contain the unmodified simulator, including the `algorithms` directory with your solution. Include your report in the `report` directory. To ensure easy identification, please tag the final version with the `week_2` tag, or include your solution in a branch named `week_2`.
