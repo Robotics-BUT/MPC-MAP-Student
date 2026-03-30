@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-833114a1.js";
+            window.path_to_searchindex_js = "searchindex-75b17f50.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-50622efd.js"></script>
@@ -204,7 +204,25 @@
 <p>Send the link to your GitHub repository to the lecturer’s email by <strong>Monday at 23:59 next week</strong>. The repository must contain the unmodified simulator, including the <code>algorithms</code> directory with your solution. Include your report in the <code>report</code> directory. To ensure easy identification, please tag the final version with the <code>week_2</code> tag, or include your solution in a branch named <code>week_2</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-3---motion-control"><a class="header" href="#week-3---motion-control">Week 3 - Motion control</a></h1>
-<p>To be added.</p>
+<p>This week, implement a simple path-following algorithm using motion capture-based localization data.</p>
+<h2 id="task-1--creating-maps"><a class="header" href="#task-1--creating-maps">Task 1 – Creating maps</a></h2>
+<p>Look into examples located in the <code>maps</code> folder and identify meaning of individual parameters by means of the reverse engineering. Then, create an arbitrary custom map containing at least one wall. The map is going to be used to test your motion control algorithm so make it rather spacious. You need to define a GNSS-denied region to simulate indoor environment where the motion capture works.</p>
+<h2 id="task-2--sample-paths"><a class="header" href="#task-2--sample-paths">Task 2 – Sample paths</a></h2>
+<p>Define at least three test paths of different kind, for example:</p>
+<ul>
+<li>straight line,</li>
+<li>circular arc,</li>
+<li>sine wave.</li>
+</ul>
+<p>A path is defined as a sequence of (x, y) waypoints. Note that waypoints stored in the <code>public_vars.path</code> variable are visualized by the simulator. Utilization of this variable is recommended.</p>
+<h2 id="task-3--motion-control"><a class="header" href="#task-3--motion-control">Task 3 – Motion control</a></h2>
+<p>Choose any path-following algorithm and implement it to make the robot follow the paths defined in the previous task. Use the variable <code>read_only_vars.mocap_pose</code> to get nearly true pose of the robot. Play with parameters of the chosen method and discuss how they affect the quality of the motion control.</p>
+<p>Put your solution to the <code>plan_motion</code> function. By default, the code structure is prepared for target point-based algorithms; you are, however, free to alter the function and use, e.g., the cross track error instead. The choice depends on your preferences, you can even implement multiple algorithms and compare them.</p>
+<p>Mind the fact that the MoCap data will not be available for the final project!</p>
+<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
+<p>To implement the tasks, use only the <code>algorithms</code> directory; do not modify the rest of the simulator. The solution must run without errors in a fresh instance of the simulator and must generate the graphical outputs included in the report.</p>
+<p>Create a single A4 report to the provided template that briefly describes your solution, with a few sentences for each task and an image where applicable.</p>
+<p>Send the link to your GitHub repository to the lecturer’s email by <strong>Monday at 23:59 next week</strong>. The repository must contain the unmodified simulator, including the <code>algorithms</code> directory with your solution (and in this case, your custom map too). Include your report in the <code>report</code> directory. To ensure easy identification, please tag the final version with the <code>week_3</code> tag, or include your solution in a branch named <code>week_3</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-4---particle-filter"><a class="header" href="#week-4---particle-filter">Week 4 - Particle Filter</a></h1>
 <p>To be added.</p>
